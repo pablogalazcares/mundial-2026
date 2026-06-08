@@ -243,3 +243,7 @@ body.wide .wrap{max-width:1340px}
   /* gráfico de favoritos con más alto para que respiren las barras */
   .chart{height:520px}
 }
+
+/* tarjeta del formulario Tally (fondo claro para que el texto del form se lea) */
+.tally-card{background:#eef2fb; border:1px solid var(--line2); border-radius:18px; padding:6px 18px; box-shadow:0 24px 60px -40px rgba(0,0,0,.6)}
+.tally-card iframe{display:block; width:100%; border:0}
