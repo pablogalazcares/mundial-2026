@@ -248,3 +248,8 @@ body.wide .wrap{max-width:1340px}
 .tally-card{background:#eef2fb; border:1px solid var(--line2); border-radius:18px; padding:6px 18px; box-shadow:0 24px 60px -40px rgba(0,0,0,.6)}
 .tally-card iframe{display:block; width:100%; border:0}
 .sub-ok{background:var(--bg2); border:1px solid var(--emerald); border-radius:12px; padding:16px; color:#cdeede; font-size:14.5px}
+
+/* fix overflow movil: inputs del form de suscripcion no deben usar su ancho intrinseco */
+.sub-form input{width:100%; min-width:0}
+.sub-form label{min-width:0}
+@media (max-width:480px){ .sub-form .row2{grid-template-columns:1fr} }
