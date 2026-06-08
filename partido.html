@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#070b16">
+<title>Partido a partido — probabilidades de marcador del Mundial 2026</title>
+<meta name="description" content="Elige dos selecciones y mira la distribución de marcadores y el 1X2 según el modelo.">
+<link rel="canonical" href="https://pablogalazcares.github.io/mundial-2026/partido.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Partido a partido — probabilidades de marcador del Mundial 2026">
+<meta property="og:description" content="Elige dos selecciones y mira la distribución de marcadores y el 1X2 según el modelo.">
+<meta property="og:image" content="https://pablogalazcares.github.io/mundial-2026/assets/og.png">
+<meta property="og:url" content="https://pablogalazcares.github.io/mundial-2026/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Partido a partido — probabilidades de marcador del Mundial 2026">
+<meta name="twitter:description" content="Elige dos selecciones y mira la distribución de marcadores y el 1X2 según el modelo.">
+<meta name="twitter:image" content="https://pablogalazcares.github.io/mundial-2026/assets/og.png">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/styles.css">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+</head>
+<body>
+<nav class="nav"><div class="wrap">
+  <a class="brand" href="index.html"><span class="dot"></span> Pronóstico Mundial 2026</a>
+  <div class="links"><a href="index.html">Inicio</a><a href="grupos.html">Grupos</a><a href="camino.html">Camino al título</a><a href="probabilidades.html">Probabilidades</a><a href="partido.html" class="active">Partido a partido</a><a href="metodologia.html">Metodología</a></div>
+</div></nav>
+<main class="wrap">
+
+  <section class="block">
+    <div class="shead"><h2>Partido a partido</h2><span class="kq">probabilidades de marcador</span></div>
+    <p class="lead">Elige dos selecciones —incluso un cruce hipotético que no ocurriría en la fase de grupos— y mira la distribución de marcadores que estima el modelo a partir de la fuerza relativa (Elo).</p>
+    <div class="picker">
+      <select id="home" aria-label="Local"><option value="alemania">🇩🇪 Alemania</option><option value="arabia saudita">🇸🇦 Arabia Saudita</option><option value="argelia">🇩🇿 Argelia</option><option value="argentina">🇦🇷 Argentina</option><option value="australia">🇦🇺 Australia</option><option value="austria">🇦🇹 Austria</option><option value="bosnia herzegovina">🇧🇦 Bosnia-Herzegovina</option><option value="brasil">🇧🇷 Brasil</option><option value="belgica">🇧🇪 Bélgica</option><option value="cabo verde">🇨🇻 Cabo Verde</option><option value="canada">🇨🇦 Canadá</option><option value="catar">🇶🇦 Catar</option><option value="colombia">🇨🇴 Colombia</option><option value="corea del sur">🇰🇷 Corea del Sur</option><option value="costa de marfil">🇨🇮 Costa de Marfil</option><option value="croacia">🇭🇷 Croacia</option><option value="curazao">🇨🇼 Curazao</option><option value="ecuador">🇪🇨 Ecuador</option><option value="egipto">🇪🇬 Egipto</option><option value="escocia">🏴󠁧󠁢󠁳󠁣󠁴󠁿 Escocia</option><option value="espana">🇪🇸 España</option><option value="estados unidos">🇺🇸 Estados Unidos</option><option value="francia">🇫🇷 Francia</option><option value="ghana">🇬🇭 Ghana</option><option value="haiti">🇭🇹 Haití</option><option value="inglaterra">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Inglaterra</option><option value="irak">🇮🇶 Irak</option><option value="iran">🇮🇷 Irán</option><option value="japon">🇯🇵 Japón</option><option value="jordania">🇯🇴 Jordania</option><option value="marruecos">🇲🇦 Marruecos</option><option value="mexico">🇲🇽 México</option><option value="noruega">🇳🇴 Noruega</option><option value="nueva zelanda">🇳🇿 Nueva Zelanda</option><option value="panama">🇵🇦 Panamá</option><option value="paraguay">🇵🇾 Paraguay</option><option value="paises bajos">🇳🇱 Países Bajos</option><option value="portugal">🇵🇹 Portugal</option><option value="rd congo">🇨🇩 RD Congo</option><option value="republica checa">🇨🇿 República Checa</option><option value="senegal">🇸🇳 Senegal</option><option value="sudafrica">🇿🇦 Sudáfrica</option><option value="suecia">🇸🇪 Suecia</option><option value="suiza">🇨🇭 Suiza</option><option value="turquia">🇹🇷 Turquía</option><option value="tunez">🇹🇳 Túnez</option><option value="uruguay">🇺🇾 Uruguay</option><option value="uzbekistan">🇺🇿 Uzbekistán</option></select>
+      <button id="swap" class="btn" title="Intercambiar">⇄</button>
+      <select id="away" aria-label="Visita"><option value="alemania">🇩🇪 Alemania</option><option value="arabia saudita">🇸🇦 Arabia Saudita</option><option value="argelia">🇩🇿 Argelia</option><option value="argentina">🇦🇷 Argentina</option><option value="australia">🇦🇺 Australia</option><option value="austria">🇦🇹 Austria</option><option value="bosnia herzegovina">🇧🇦 Bosnia-Herzegovina</option><option value="brasil">🇧🇷 Brasil</option><option value="belgica">🇧🇪 Bélgica</option><option value="cabo verde">🇨🇻 Cabo Verde</option><option value="canada">🇨🇦 Canadá</option><option value="catar">🇶🇦 Catar</option><option value="colombia">🇨🇴 Colombia</option><option value="corea del sur">🇰🇷 Corea del Sur</option><option value="costa de marfil">🇨🇮 Costa de Marfil</option><option value="croacia">🇭🇷 Croacia</option><option value="curazao">🇨🇼 Curazao</option><option value="ecuador">🇪🇨 Ecuador</option><option value="egipto">🇪🇬 Egipto</option><option value="escocia">🏴󠁧󠁢󠁳󠁣󠁴󠁿 Escocia</option><option value="espana">🇪🇸 España</option><option value="estados unidos">🇺🇸 Estados Unidos</option><option value="francia">🇫🇷 Francia</option><option value="ghana">🇬🇭 Ghana</option><option value="haiti">🇭🇹 Haití</option><option value="inglaterra">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Inglaterra</option><option value="irak">🇮🇶 Irak</option><option value="iran">🇮🇷 Irán</option><option value="japon">🇯🇵 Japón</option><option value="jordania">🇯🇴 Jordania</option><option value="marruecos">🇲🇦 Marruecos</option><option value="mexico">🇲🇽 México</option><option value="noruega">🇳🇴 Noruega</option><option value="nueva zelanda">🇳🇿 Nueva Zelanda</option><option value="panama">🇵🇦 Panamá</option><option value="paraguay">🇵🇾 Paraguay</option><option value="paises bajos">🇳🇱 Países Bajos</option><option value="portugal">🇵🇹 Portugal</option><option value="rd congo">🇨🇩 RD Congo</option><option value="republica checa">🇨🇿 República Checa</option><option value="senegal">🇸🇳 Senegal</option><option value="sudafrica">🇿🇦 Sudáfrica</option><option value="suecia">🇸🇪 Suecia</option><option value="suiza">🇨🇭 Suiza</option><option value="turquia">🇹🇷 Turquía</option><option value="tunez">🇹🇳 Túnez</option><option value="uruguay">🇺🇾 Uruguay</option><option value="uzbekistan">🇺🇿 Uzbekistán</option></select>
+      <label class="hostlbl"><input type="checkbox" id="host"> ventaja de local</label>
+    </div>
+    <div id="o12" class="o12"></div>
+    <div class="grid2">
+      <div class="card"><h3 class="ch3">Marcadores más probables</h3><div id="topsc" class="topsc"></div></div>
+      <div class="card"><h3 class="ch3">Mapa de marcadores</h3><div id="heat" class="chart sm"></div></div>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap">
+  <span>Modelo abierto (Elo + mercado de apuestas) · simulación de 6,000 torneos · se actualiza cada 4 h.</span>
+  <span><a href="metodologia.html">Metodología</a> · <a href="https://github.com/pablogalazcares" rel="noopener">código</a></span>
+</div></footer>
+<script>
+(function(){
+  var el=document.querySelector('[data-updated]'); if(!el) return;
+  var t=Date.parse(el.getAttribute('data-updated')); if(isNaN(t)) return;
+  var s=Math.max(0,(Date.now()-t)/1000), o;
+  if(s<3600) o=Math.round(s/60)+' min'; else if(s<86400) o=Math.round(s/3600)+' h'; else o=Math.round(s/86400)+' d';
+  el.textContent='actualizado hace '+o;
+})();
+</script>
+<script>
+var ELO={"alemania": 1955, "arabia saudita": 1640, "argelia": 1780, "argentina": 2095, "australia": 1720, "austria": 1790, "bosnia herzegovina": 1705, "brasil": 2020, "belgica": 1925, "cabo verde": 1640, "canada": 1730, "catar": 1680, "colombia": 1915, "corea del sur": 1790, "costa de marfil": 1800, "croacia": 1900, "curazao": 1530, "ecuador": 1825, "egipto": 1725, "escocia": 1775, "espana": 2120, "estados unidos": 1790, "francia": 2070, "ghana": 1700, "haiti": 1535, "inglaterra": 2015, "irak": 1600, "iran": 1800, "japon": 1880, "jordania": 1610, "marruecos": 1860, "mexico": 1810, "noruega": 1810, "nueva zelanda": 1500, "panama": 1695, "paraguay": 1730, "paises bajos": 2010, "portugal": 2005, "rd congo": 1700, "republica checa": 1760, "senegal": 1840, "sudafrica": 1665, "suecia": 1795, "suiza": 1855, "turquia": 1800, "tunez": 1690, "uruguay": 1895, "uzbekistan": 1660}, CFG={"base": 1.3, "k": 0.0017, "hfa": 60, "rho": -0.13, "maxg": 10}, TEAMS=[{"k": "alemania", "n": "Alemania", "f": "🇩🇪", "t": "GER"}, {"k": "arabia saudita", "n": "Arabia Saudita", "f": "🇸🇦", "t": "KSA"}, {"k": "argelia", "n": "Argelia", "f": "🇩🇿", "t": "ALG"}, {"k": "argentina", "n": "Argentina", "f": "🇦🇷", "t": "ARG"}, {"k": "australia", "n": "Australia", "f": "🇦🇺", "t": "AUS"}, {"k": "austria", "n": "Austria", "f": "🇦🇹", "t": "AUT"}, {"k": "bosnia herzegovina", "n": "Bosnia-Herzegovina", "f": "🇧🇦", "t": "BIH"}, {"k": "brasil", "n": "Brasil", "f": "🇧🇷", "t": "BRA"}, {"k": "belgica", "n": "Bélgica", "f": "🇧🇪", "t": "BEL"}, {"k": "cabo verde", "n": "Cabo Verde", "f": "🇨🇻", "t": "CPV"}, {"k": "canada", "n": "Canadá", "f": "🇨🇦", "t": "CAN"}, {"k": "catar", "n": "Catar", "f": "🇶🇦", "t": "QAT"}, {"k": "colombia", "n": "Colombia", "f": "🇨🇴", "t": "COL"}, {"k": "corea del sur", "n": "Corea del Sur", "f": "🇰🇷", "t": "KOR"}, {"k": "costa de marfil", "n": "Costa de Marfil", "f": "🇨🇮", "t": "CIV"}, {"k": "croacia", "n": "Croacia", "f": "🇭🇷", "t": "CRO"}, {"k": "curazao", "n": "Curazao", "f": "🇨🇼", "t": "CUW"}, {"k": "ecuador", "n": "Ecuador", "f": "🇪🇨", "t": "ECU"}, {"k": "egipto", "n": "Egipto", "f": "🇪🇬", "t": "EGY"}, {"k": "escocia", "n": "Escocia", "f": "🏴󠁧󠁢󠁳󠁣󠁴󠁿", "t": "SCO"}, {"k": "espana", "n": "España", "f": "🇪🇸", "t": "ESP"}, {"k": "estados unidos", "n": "Estados Unidos", "f": "🇺🇸", "t": "USA"}, {"k": "francia", "n": "Francia", "f": "🇫🇷", "t": "FRA"}, {"k": "ghana", "n": "Ghana", "f": "🇬🇭", "t": "GHA"}, {"k": "haiti", "n": "Haití", "f": "🇭🇹", "t": "HAI"}, {"k": "inglaterra", "n": "Inglaterra", "f": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "t": "ENG"}, {"k": "irak", "n": "Irak", "f": "🇮🇶", "t": "IRQ"}, {"k": "iran", "n": "Irán", "f": "🇮🇷", "t": "IRN"}, {"k": "japon", "n": "Japón", "f": "🇯🇵", "t": "JPN"}, {"k": "jordania", "n": "Jordania", "f": "🇯🇴", "t": "JOR"}, {"k": "marruecos", "n": "Marruecos", "f": "🇲🇦", "t": "MAR"}, {"k": "mexico", "n": "México", "f": "🇲🇽", "t": "MEX"}, {"k": "noruega", "n": "Noruega", "f": "🇳🇴", "t": "NOR"}, {"k": "nueva zelanda", "n": "Nueva Zelanda", "f": "🇳🇿", "t": "NZL"}, {"k": "panama", "n": "Panamá", "f": "🇵🇦", "t": "PAN"}, {"k": "paraguay", "n": "Paraguay", "f": "🇵🇾", "t": "PAR"}, {"k": "paises bajos", "n": "Países Bajos", "f": "🇳🇱", "t": "NED"}, {"k": "portugal", "n": "Portugal", "f": "🇵🇹", "t": "POR"}, {"k": "rd congo", "n": "RD Congo", "f": "🇨🇩", "t": "COD"}, {"k": "republica checa", "n": "República Checa", "f": "🇨🇿", "t": "CZE"}, {"k": "senegal", "n": "Senegal", "f": "🇸🇳", "t": "SEN"}, {"k": "sudafrica", "n": "Sudáfrica", "f": "🇿🇦", "t": "RSA"}, {"k": "suecia", "n": "Suecia", "f": "🇸🇪", "t": "SWE"}, {"k": "suiza", "n": "Suiza", "f": "🇨🇭", "t": "SUI"}, {"k": "turquia", "n": "Turquía", "f": "🇹🇷", "t": "TUR"}, {"k": "tunez", "n": "Túnez", "f": "🇹🇳", "t": "TUN"}, {"k": "uruguay", "n": "Uruguay", "f": "🇺🇾", "t": "URU"}, {"k": "uzbekistan", "n": "Uzbekistán", "f": "🇺🇿", "t": "UZB"}];
+function fact(n){var f=1;for(var i=2;i<=n;i++)f*=i;return f;}
+function pois(l,n){return Math.pow(l,n)*Math.exp(-l)/fact(n);}
+function tau(x,y,l,m,r){if(x===0&&y===0)return 1-l*m*r;if(x===0&&y===1)return 1+l*r;if(x===1&&y===0)return 1+m*r;if(x===1&&y===1)return 1-r;return 1;}
+function matrix(eh,ea,host){
+  var hfa=host?CFG.hfa:0, dr=(eh+hfa)-ea, lh=CFG.base*Math.exp(CFG.k*dr), la=CFG.base*Math.exp(-CFG.k*dr);
+  var n=CFG.maxg,M=[],tot=0;
+  for(var i=0;i<=n;i++){M[i]=[];for(var j=0;j<=n;j++){var p=pois(lh,i)*pois(la,j)*tau(i,j,lh,la,CFG.rho);M[i][j]=p;tot+=p;}}
+  for(i=0;i<=n;i++)for(j=0;j<=n;j++)M[i][j]/=tot; return M;
+}
+function analyze(M){var ph=0,pd=0,pa=0,sc=[];for(var i=0;i<M.length;i++)for(var j=0;j<M.length;j++){var p=M[i][j];if(i>j)ph+=p;else if(i===j)pd+=p;else pa+=p;sc.push([i,j,p]);}sc.sort(function(a,b){return b[2]-a[2];});return {ph:ph,pd:pd,pa:pa,sc:sc};}
+function tinfo(k){for(var i=0;i<TEAMS.length;i++)if(TEAMS[i].k===k)return TEAMS[i];return {f:'',t:k};}
+var heat=echarts.init(document.getElementById('heat'));
+function render(){
+  var hk=document.getElementById('home').value, ak=document.getElementById('away').value, host=document.getElementById('host').checked;
+  var H=tinfo(hk),A=tinfo(ak), M=matrix(ELO[hk],ELO[ak],host), r=analyze(M);
+  function blk(lbl,p,cls){return '<div class="o12c '+cls+'"><div class="ol">'+lbl+'</div><div class="op">'+(p*100).toFixed(0)+'%</div><div class="obar"><i style="width:'+(p*100).toFixed(0)+'%"></i></div></div>';}
+  document.getElementById('o12').innerHTML =
+    blk('Gana '+H.f+' '+H.t,r.ph,'h')+blk('Empate',r.pd,'d')+blk('Gana '+A.f+' '+A.t,r.pa,'a');
+  document.getElementById('topsc').innerHTML = r.sc.slice(0,7).map(function(s){
+    var w=(s[2]*100).toFixed(0); return '<div class="sc"><span class="scn">'+H.t+' '+s[0]+'–'+s[1]+' '+A.t+'</span>'+
+      '<span class="scbar"><i style="width:'+Math.max(4,s[2]*100*3)+'%"></i></span><span class="scp">'+(s[2]*100).toFixed(1)+'%</span></div>';
+  }).join('');
+  var N=6, data=[]; for(var i=0;i<=N;i++)for(var j=0;j<=N;j++)data.push([j,i,+(M[i][j]*100).toFixed(1)]);
+  heat.setOption({
+    grid:{left:42,right:14,top:10,bottom:34},
+    tooltip:{formatter:function(p){return H.t+' '+p.data[1]+'–'+p.data[0]+' '+A.t+': <b>'+p.data[2]+'%</b>';}},
+    xAxis:{type:'category',name:A.t,nameLocation:'middle',nameGap:22,data:[0,1,2,3,4,5,6],axisLabel:{color:'#9aa7cc'},axisLine:{lineStyle:{color:'#26304d'}}},
+    yAxis:{type:'category',name:H.t,data:[0,1,2,3,4,5,6],axisLabel:{color:'#9aa7cc'},axisLine:{lineStyle:{color:'#26304d'}}},
+    visualMap:{min:0,max:Math.max(6,data.reduce(function(m,d){return Math.max(m,d[2]);},0)),show:false,inRange:{color:['#121a2e','#1f6f57','#10d39e']}},
+    series:[{type:'heatmap',data:data,label:{show:false},itemStyle:{borderColor:'#0b1220',borderWidth:1}}]
+  });
+}
+['home','away','host'].forEach(function(id){document.getElementById(id).addEventListener('change',render);});
+document.getElementById('swap').addEventListener('click',function(){var h=document.getElementById('home'),a=document.getElementById('away');var t=h.value;h.value=a.value;a.value=t;render();});
+(function(){var keys=TEAMS.map(function(x){return x.k;});document.getElementById('home').value=keys.indexOf('espana')>=0?'espana':keys[0];document.getElementById('away').value=keys.indexOf('brasil')>=0?'brasil':keys[1];})();
+window.addEventListener('resize',function(){heat.resize();});
+render();
+</script>
+</body>
+</html>
