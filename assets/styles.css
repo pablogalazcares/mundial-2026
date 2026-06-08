@@ -135,10 +135,12 @@ footer a{color:var(--dim)}
 
 /* ===== mejoras P3 v2 ===== */
 /* bracket con conectores + slots + winprob */
-.bracket-wrap{position:relative}
-.bracket{position:relative}
+.bracket-wrap{position:relative; width:min(1360px,calc(100vw - 28px)); left:50%; transform:translateX(-50%)}
+.bracket{position:relative; gap:0}
 .bk-lines{position:absolute; top:0; left:0; pointer-events:none; z-index:0}
-.bcol{position:relative; z-index:1; min-width:150px}
+.bcol{position:relative; z-index:1; flex:1 1 0; min-width:166px; align-items:center}
+.bcol .bx{width:150px}
+.bcol-champ .champ{width:150px}
 .bx-t{position:relative}
 .bx-t .slot{font-family:'Space Grotesk'; font-weight:600; font-size:10px; color:var(--faint);
   background:#0d1424; border:1px solid var(--line); border-radius:5px; padding:1px 5px; min-width:30px; text-align:center}
