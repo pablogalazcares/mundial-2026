@@ -88,9 +88,9 @@
       e.preventDefault();
       var email=(f.querySelector('input[name="fields[email]"]')||{}).value||'';
       if(!email || email.indexOf('@')<1){ return; }
-      var fd=new FormData(f); fd.append('ml-submit','1'); fd.append('anticsrf','true');
+      var p=new URLSearchParams(new FormData(f)); p.append('ml-submit','1'); p.append('anticsrf','true');
       var btn=f.querySelector('button'); if(btn){ btn.disabled=true; btn.textContent='Enviando…'; }
-      fetch(f.action, {method:'POST', body:fd, mode:'no-cors'}).then(done).catch(done);
+      fetch(f.action, {method:'POST', mode:'no-cors', body:p}).then(done).catch(done);
       function done(){ f.innerHTML='<div class="sub-ok"><b>¡Listo!</b> Te suscribiste. Revisa tu correo (mira también spam) por si te pedimos confirmar.</div>'; }
     });
   })();

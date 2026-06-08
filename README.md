@@ -1,1 +1,1 @@
-# mundial-2026 (P3)
+# mundial-2026
