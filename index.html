@@ -18,7 +18,7 @@
 <meta name="twitter:image" content="https://pablogalazcares.github.io/mundial-2026/assets/og.png">
 <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/styles.css">
-<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+
 </head>
 <body>
 <nav class="nav"><div class="wrap">
@@ -38,7 +38,7 @@
 
   <section class="block">
     <div class="shead"><h2>Favoritos al título</h2><span class="kq">probabilidad de ser campeón</span></div>
-    <div class="card"><div id="chFav" class="chart"></div></div>
+    <div class="card"><div class="favs"><div class="favrow"><span class="fl">🇪🇸</span><span class="ftri">ESP</span><span class="fbar"><i style="width:100%"></i></span><span class="fpct">15.8%</span></div><div class="favrow"><span class="fl">🇦🇷</span><span class="ftri">ARG</span><span class="fbar"><i style="width:90%"></i></span><span class="fpct">14.1%</span></div><div class="favrow"><span class="fl">🇫🇷</span><span class="ftri">FRA</span><span class="fbar"><i style="width:77%"></i></span><span class="fpct">12.2%</span></div><div class="favrow"><span class="fl">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span><span class="ftri">ENG</span><span class="fbar"><i style="width:54%"></i></span><span class="fpct">8.6%</span></div><div class="favrow"><span class="fl">🇳🇱</span><span class="ftri">NED</span><span class="fbar"><i style="width:52%"></i></span><span class="fpct">8.2%</span></div><div class="favrow"><span class="fl">🇵🇹</span><span class="ftri">POR</span><span class="fbar"><i style="width:46%"></i></span><span class="fpct">7.3%</span></div><div class="favrow"><span class="fl">🇧🇷</span><span class="ftri">BRA</span><span class="fbar"><i style="width:43%"></i></span><span class="fpct">6.8%</span></div><div class="favrow"><span class="fl">🇩🇪</span><span class="ftri">GER</span><span class="fbar"><i style="width:29%"></i></span><span class="fpct">4.6%</span></div><div class="favrow"><span class="fl">🇧🇪</span><span class="ftri">BEL</span><span class="fbar"><i style="width:15%"></i></span><span class="fpct">2.4%</span></div><div class="favrow"><span class="fl">🇨🇴</span><span class="ftri">COL</span><span class="fbar"><i style="width:14%"></i></span><span class="fpct">2.2%</span></div><div class="favrow"><span class="fl">🇺🇾</span><span class="ftri">URU</span><span class="fbar"><i style="width:13%"></i></span><span class="fpct">2.1%</span></div><div class="favrow"><span class="fl">🇭🇷</span><span class="ftri">CRO</span><span class="fbar"><i style="width:13%"></i></span><span class="fpct">2.0%</span></div><div class="favrow"><span class="fl">🇯🇵</span><span class="ftri">JPN</span><span class="fbar"><i style="width:12%"></i></span><span class="fpct">1.9%</span></div><div class="favrow"><span class="fl">🇨🇭</span><span class="ftri">SUI</span><span class="fbar"><i style="width:9%"></i></span><span class="fpct">1.4%</span></div></div></div>
   </section>
 
   <section class="block">
@@ -110,18 +110,6 @@
   el.textContent='actualizado hace '+o;
 })();
 </script>
-<script>
-  var ch=echarts.init(document.getElementById('chFav'),null,{renderer:'canvas'});
-  ch.setOption({
-    grid:{left:8,right:46,top:6,bottom:6,containLabel:true},
-    tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:function(p){return p[0].name+': <b>'+p[0].value+'%</b> campeón';}},
-    xAxis:{type:'value',axisLabel:{formatter:'{value}%',color:'#9aa7cc'},splitLine:{lineStyle:{color:'#1d2742'}}},
-    yAxis:{type:'category',data:["🇨🇭 SUI", "🇯🇵 JPN", "🇭🇷 CRO", "🇺🇾 URU", "🇨🇴 COL", "🇧🇪 BEL", "🇩🇪 GER", "🇧🇷 BRA", "🇵🇹 POR", "🇳🇱 NED", "🏴󠁧󠁢󠁥󠁮󠁧󠁿 ENG", "🇫🇷 FRA", "🇦🇷 ARG", "🇪🇸 ESP"],axisLabel:{color:'#eaf0ff',fontSize:13},axisLine:{show:false},axisTick:{show:false}},
-    series:[{type:'bar',data:[1.4, 1.9, 2.0, 2.1, 2.2, 2.4, 4.6, 6.8, 7.3, 8.2, 8.6, 12.2, 14.1, 15.8],barWidth:'62%',
-      itemStyle:{borderRadius:[0,7,7,0],color:new echarts.graphic.LinearGradient(0,0,1,0,[{offset:0,color:'#10d39e'},{offset:1,color:'#34d0ff'}])},
-      label:{show:true,position:'right',formatter:'{c}%',color:'#eaf0ff',fontWeight:600}}]
-  });
-  window.addEventListener('resize',function(){ch.resize();});
-</script>
+
 </body>
 </html>
