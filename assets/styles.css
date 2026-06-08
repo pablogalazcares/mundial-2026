@@ -117,9 +117,9 @@ td.team-c .fl{margin-right:8px}
 @media (max-width:620px){ .full{display:none} .abbr{display:inline} .podium{grid-template-columns:1fr 1fr 1fr; gap:8px} .pod{padding:14px 8px} .pod .pct{font-size:22px} .pod .fl{font-size:30px} }
 
 /* metodología */
-.prose{max-width:72ch}
+.prose{max-width:none}
 .prose h3{margin:26px 0 6px; font-size:18px}
-.prose p,.prose li{color:#d6deff}
+.prose p,.prose li{color:#d6deff; max-width:76ch}
 .prose code{background:var(--surface); border:1px solid var(--line); border-radius:6px; padding:1px 6px; font-size:13px}
 .steps{display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; margin:14px 0}
 .step{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:14px}
