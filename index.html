@@ -32,7 +32,7 @@
     <h1>¿Quién gana el <span class="g">Mundial 2026</span>?</h1>
     <p class="sub">Las probabilidades de cada selección según un modelo que combina su fuerza (Elo) con el mercado de apuestas, simulando el torneo completo miles de veces.</p>
     <div class="updated"><span class="live">en vivo</span> · <span data-updated="2026-06-08T15:51:55.065440+00:00">actualizado</span></div>
-    <div class="podium"><div class="pod first"><div class="crown">👑</div><div class="rank">1º</div><div class="fl">🇪🇸</div><div class="nm">España</div><div class="pct">15.8%</div><div class="lbl">campeón</div></div><div class="pod "><div class="rank">2º</div><div class="fl">🇦🇷</div><div class="nm">Argentina</div><div class="pct">14.4%</div><div class="lbl">campeón</div></div><div class="pod "><div class="rank">3º</div><div class="fl">🇫🇷</div><div class="nm">Francia</div><div class="pct">12.2%</div><div class="lbl">campeón</div></div></div>
+    <div class="podium"><div class="pod first"><div class="crown">👑</div><div class="rank">1º</div><div class="fl">🇪🇸</div><div class="nm">España</div><div class="pct">15.8%</div><div class="lbl">campeón</div></div><div class="pod "><div class="rank">2º</div><div class="fl">🇦🇷</div><div class="nm">Argentina</div><div class="pct">14.2%</div><div class="lbl">campeón</div></div><div class="pod "><div class="rank">3º</div><div class="fl">🇫🇷</div><div class="nm">Francia</div><div class="pct">12.2%</div><div class="lbl">campeón</div></div></div>
   </section>
 
   <section class="block">
@@ -77,8 +77,8 @@
     grid:{left:8,right:46,top:6,bottom:6,containLabel:true},
     tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:function(p){return p[0].name+': <b>'+p[0].value+'%</b> campeón';}},
     xAxis:{type:'value',axisLabel:{formatter:'{value}%',color:'#9aa7cc'},splitLine:{lineStyle:{color:'#1d2742'}}},
-    yAxis:{type:'category',data:["🇨🇭 Suiza", "🇯🇵 Japón", "🇭🇷 Croacia", "🇺🇾 Uruguay", "🇨🇴 Colombia", "🇧🇪 Bélgica", "🇩🇪 Alemania", "🇧🇷 Brasil", "🇵🇹 Portugal", "🇳🇱 Países Bajos", "🏴󠁧󠁢󠁥󠁮󠁧󠁿 Inglaterra", "🇫🇷 Francia", "🇦🇷 Argentina", "🇪🇸 España"],axisLabel:{color:'#eaf0ff',fontSize:13},axisLine:{show:false},axisTick:{show:false}},
-    series:[{type:'bar',data:[1.3, 1.8, 1.9, 2.0, 2.3, 2.4, 4.5, 6.8, 7.2, 8.2, 8.6, 12.2, 14.4, 15.8],barWidth:'62%',
+    yAxis:{type:'category',data:["🇨🇭 SUI", "🇯🇵 JPN", "🇭🇷 CRO", "🇺🇾 URU", "🇨🇴 COL", "🇧🇪 BEL", "🇩🇪 GER", "🇧🇷 BRA", "🇵🇹 POR", "🇳🇱 NED", "🏴󠁧󠁢󠁥󠁮󠁧󠁿 ENG", "🇫🇷 FRA", "🇦🇷 ARG", "🇪🇸 ESP"],axisLabel:{color:'#eaf0ff',fontSize:13},axisLine:{show:false},axisTick:{show:false}},
+    series:[{type:'bar',data:[1.3, 1.9, 2.0, 2.0, 2.3, 2.4, 4.6, 6.8, 7.2, 8.2, 8.6, 12.2, 14.2, 15.8],barWidth:'62%',
       itemStyle:{borderRadius:[0,7,7,0],color:new echarts.graphic.LinearGradient(0,0,1,0,[{offset:0,color:'#10d39e'},{offset:1,color:'#34d0ff'}])},
       label:{show:true,position:'right',formatter:'{c}%',color:'#eaf0ff',fontWeight:600}}]
   });

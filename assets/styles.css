@@ -191,3 +191,55 @@ body.wide .wrap{max-width:1340px}
 .topsc .scbar > i{display:block; height:100%; background:var(--grad); border-radius:5px}
 .topsc .scp{font-family:'Space Grotesk'; font-weight:600; width:44px; text-align:right; color:var(--dim)}
 @media (max-width:720px){ .grid2{grid-template-columns:1fr} .o12 .ol{min-height:0} .topsc .scn{flex-basis:120px} }
+
+/* ===== CTA nav + suscripción + preguntas (Fase 0) ===== */
+.nav .cta{margin-left:8px; background:var(--grad); color:#06231b; font-weight:700; font-size:14px;
+  padding:8px 14px; border-radius:10px; white-space:nowrap; box-shadow:0 0 18px rgba(16,211,158,.35)}
+.nav .cta:hover{filter:brightness(1.05)}
+
+.sub{display:grid; grid-template-columns:1.05fr .95fr; gap:22px; background:linear-gradient(135deg,var(--surface2),var(--surface));
+  border:1px solid var(--line2); border-radius:22px; padding:26px; align-items:center;
+  box-shadow:0 30px 80px -40px rgba(16,211,158,.35)}
+.sub-copy h2{font-size:clamp(22px,3vw,30px); margin:12px 0 8px}
+.ticks{list-style:none; padding:0; margin:12px 0 0; color:#cdd6f5; font-size:14.5px}
+.ticks li{padding:5px 0 5px 26px; position:relative}
+.ticks li::before{content:"✓"; position:absolute; left:0; color:var(--emerald); font-weight:700}
+.sub-form{background:var(--bg2); border:1px solid var(--line); border-radius:16px; padding:18px}
+.sub-form .row2{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+.sub-form label{display:flex; flex-direction:column; gap:5px; font-size:12.5px; color:var(--dim); margin-bottom:10px}
+.sub-form input{background:var(--surface); border:1px solid var(--line2); border-radius:10px; padding:11px 12px;
+  color:var(--text); font-size:15px; font-family:inherit}
+.sub-form input:focus{outline:2px solid var(--emerald); outline-offset:1px; border-color:transparent}
+.btn-primary{width:100%; border:none; cursor:pointer; background:var(--grad); color:#06231b; font-weight:700;
+  font-size:15px; padding:13px 16px; border-radius:11px; font-family:inherit; display:inline-block; text-align:center}
+.btn-primary:hover{filter:brightness(1.05)}
+.btn-primary.alt{width:auto; white-space:nowrap}
+.fineprint{color:var(--faint); font-size:11.5px; line-height:1.45; margin:12px 0 0}
+.fineprint a{color:var(--dim); text-decoration:underline}
+
+.qcard{display:flex; align-items:center; justify-content:space-between; gap:18px; flex-wrap:wrap;
+  background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:20px 24px}
+.qcard h2{margin:0 0 4px; font-size:20px}
+
+@media (max-width:760px){ .sub{grid-template-columns:1fr; padding:20px} .nav .cta{display:none} }
+
+/* ===== Arreglos MÓVIL (P3) ===== */
+@media (max-width:760px){
+  /* nav: marca arriba, pestañas en fila con scroll horizontal */
+  .nav .wrap{height:auto; min-height:54px; flex-wrap:wrap; align-items:center; row-gap:6px; padding:8px 14px; gap:10px}
+  .brand{font-size:15px; white-space:nowrap; flex:0 0 auto}
+  .nav .cta{display:none}
+  .nav .links{order:3; width:100%; margin-left:0; flex-wrap:nowrap; overflow-x:auto; gap:4px;
+    -webkit-overflow-scrolling:touch; scrollbar-width:none; -ms-overflow-style:none}
+  .nav .links::-webkit-scrollbar{display:none}
+  .nav .links a{flex:0 0 auto; white-space:nowrap; padding:7px 11px}
+
+  /* bracket: títulos estáticos (sin solape) y más aire entre cajas */
+  .bcol-h{position:static; background:none; box-shadow:none; padding:4px 0 12px}
+  .bcol-body{gap:26px}
+  .bcol{min-width:158px}
+  .bcol .bx{width:148px}
+
+  /* gráfico de favoritos con más alto para que respiren las barras */
+  .chart{height:520px}
+}
