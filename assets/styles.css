@@ -197,7 +197,7 @@ body.wide .wrap{max-width:1340px}
   padding:8px 14px; border-radius:10px; white-space:nowrap; box-shadow:0 0 18px rgba(16,211,158,.35)}
 .nav .cta:hover{filter:brightness(1.05)}
 
-.sub{display:grid; grid-template-columns:1.05fr .95fr; gap:22px; background:linear-gradient(135deg,var(--surface2),var(--surface));
+.subscribe{display:grid; grid-template-columns:1.05fr .95fr; gap:22px; background:linear-gradient(135deg,var(--surface2),var(--surface));
   border:1px solid var(--line2); border-radius:22px; padding:26px; align-items:center;
   box-shadow:0 30px 80px -40px rgba(16,211,158,.35)}
 .sub-copy h2{font-size:clamp(22px,3vw,30px); margin:12px 0 8px}
@@ -221,7 +221,7 @@ body.wide .wrap{max-width:1340px}
   background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:20px 24px}
 .qcard h2{margin:0 0 4px; font-size:20px}
 
-@media (max-width:760px){ .sub{grid-template-columns:1fr; padding:20px} .nav .cta{display:none} }
+@media (max-width:760px){ .subscribe{grid-template-columns:1fr; padding:20px} }
 
 /* ===== Arreglos MÓVIL (P3) ===== */
 @media (max-width:760px){
@@ -247,3 +247,4 @@ body.wide .wrap{max-width:1340px}
 /* tarjeta del formulario Tally (fondo claro para que el texto del form se lea) */
 .tally-card{background:#eef2fb; border:1px solid var(--line2); border-radius:18px; padding:6px 18px; box-shadow:0 24px 60px -40px rgba(0,0,0,.6)}
 .tally-card iframe{display:block; width:100%; border:0}
+.sub-ok{background:var(--bg2); border:1px solid var(--emerald); border-radius:12px; padding:16px; color:#cdeede; font-size:14.5px}

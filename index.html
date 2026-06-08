@@ -31,7 +31,7 @@
   <section class="hero">
     <span class="eyebrow">⚽ Probabilidades en vivo</span>
     <h1>¿Quién gana el <span class="g">Mundial 2026</span>?</h1>
-    <p class="sub">Las probabilidades de cada selección según un modelo que combina su fuerza (Elo) con el mercado de apuestas, simulando el torneo completo miles de veces.</p>
+    <p class="sub">Las probabilidades de cada selección según un modelo ensamblado que mezcla datos de partidos, el mercado de apuestas y la actualidad, y simula el torneo completo miles de veces.</p>
     <div class="updated"><span class="live">en vivo</span> · <span data-updated="2026-06-08T15:51:55.065440+00:00">actualizado</span></div>
     <div class="podium"><div class="pod first"><div class="crown">👑</div><div class="rank">1º</div><div class="fl">🇪🇸</div><div class="nm">España</div><div class="pct">15.8%</div><div class="lbl">campeón</div></div><div class="pod "><div class="rank">2º</div><div class="fl">🇦🇷</div><div class="nm">Argentina</div><div class="pct">14.2%</div><div class="lbl">campeón</div></div><div class="pod "><div class="rank">3º</div><div class="fl">🇫🇷</div><div class="nm">Francia</div><div class="pct">12.2%</div><div class="lbl">campeón</div></div></div>
   </section>
@@ -59,28 +59,42 @@
   </section>
 
   <section class="block" id="suscribete">
-    <div class="sub">
+    <div class="subscribe">
       <div class="sub-copy">
         <span class="eyebrow">📩 Gratis · sin spam</span>
         <h2>Recibe el análisis del Mundial en tu correo</h2>
-        <p class="lead">Te aviso cuando el modelo detecta <b>value</b> (cuándo el precio del mercado se separa de la probabilidad real), probabilidades que se mueven y datos curiosos del torneo. Tú decides; te puedes salir cuando quieras.</p>
+        <p class="lead">Probabilidades que se mueven, datos curiosos del torneo y novedades del modelo, directo a tu correo. Tú decides; te puedes salir cuando quieras.</p>
         <ul class="ticks">
-          <li>Probabilidades y <i>value spots</i> del modelo abierto</li>
-          <li>Qué cambió y por qué, sin relleno</li>
+          <li>Las probabilidades del modelo y cómo cambian</li>
+          <li>Datos y curiosidades del Mundial</li>
           <li>0 spam · baja con un clic</li>
         </ul>
       </div>
-      <form class="sub-form" action="#" method="post" novalidate onsubmit="return false">
+      <form class="sub-form" action="https://assets.mailerlite.com/jsonp/2418115/forms/189741672164230842/subscribe" method="post" novalidate>
         <div class="row2">
           <label>Nombre<input type="text" name="fields[name]" required placeholder="Tu nombre"></label>
           <label>Apellido<input type="text" name="fields[last_name]" placeholder="Tu apellido"></label>
         </div>
         <label>Correo<input type="email" name="fields[email]" required placeholder="tucorreo@ejemplo.com"></label>
-        <button type="button" class="btn-primary" disabled style="opacity:.6;cursor:default">Disponible muy pronto</button>
+        <button type="submit" class="btn-primary">Quiero recibir el análisis</button>
         <p class="fineprint">+18. Esto es <b>análisis estadístico</b>, no asesoría financiera ni garantía de ganancias: apostar implica riesgo de pérdida. Juega con responsabilidad. Al suscribirte aceptas la <a href="privacidad.html">política de privacidad</a>.</p>
       </form>
     </div>
   </section>
+  <script>
+  (function(){
+    var f=document.querySelector('.sub-form'); if(!f || f.getAttribute('action')==='#') return;
+    f.addEventListener('submit', function(e){
+      e.preventDefault();
+      var email=(f.querySelector('input[name="fields[email]"]')||{}).value||'';
+      if(!email || email.indexOf('@')<1){ return; }
+      var fd=new FormData(f); fd.append('ml-submit','1'); fd.append('anticsrf','true');
+      var btn=f.querySelector('button'); if(btn){ btn.disabled=true; btn.textContent='Enviando…'; }
+      fetch(f.action, {method:'POST', body:fd, mode:'no-cors'}).then(done).catch(done);
+      function done(){ f.innerHTML='<div class="sub-ok"><b>¡Listo!</b> Te suscribiste. Revisa tu correo (mira también spam) por si te pedimos confirmar.</div>'; }
+    });
+  })();
+  </script>
 
   <section class="block">
     <div class="shead"><h2>¿Tienes una pregunta?</h2><span class="kq">comunidad</span></div>
