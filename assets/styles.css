@@ -1,0 +1,134 @@
+/* ============ Pronóstico Mundial 2026 — identidad pro (P3) ============ */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#070b16; --bg2:#0c1222; --surface:#121a2e; --surface2:#16203a;
+  --line:#26304d; --line2:#33406a;
+  --text:#eaf0ff; --dim:#9aa7cc; --faint:#6b7798;
+  --emerald:#10d39e; --cyan:#34d0ff; --gold:#ffd24a; --rose:#ff5d73; --violet:#9b8cff;
+  --grad:linear-gradient(135deg,#10d39e 0%,#34d0ff 100%);
+  --maxw:1080px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:radial-gradient(1200px 600px at 50% -10%,#16223f 0%,var(--bg) 55%) no-repeat,var(--bg);
+  color:var(--text); font:16px/1.55 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  font-variant-numeric:tabular-nums; -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,.display{font-family:'Space Grotesk','Inter',sans-serif; letter-spacing:-.02em}
+a{color:var(--cyan); text-decoration:none}
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 18px}
+
+/* nav */
+.nav{position:sticky; top:0; z-index:20; backdrop-filter:saturate(160%) blur(12px);
+  background:color-mix(in srgb,var(--bg) 78%,transparent); border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex; align-items:center; gap:18px; height:60px}
+.brand{display:flex; align-items:center; gap:10px; font-family:'Space Grotesk'; font-weight:700; font-size:17px}
+.brand .dot{width:24px; height:24px; border-radius:7px; background:var(--grad); box-shadow:0 0 18px rgba(16,211,158,.5)}
+.nav .links{display:flex; gap:4px; margin-left:auto; flex-wrap:wrap}
+.nav .links a{color:var(--dim); font-weight:600; font-size:14px; padding:8px 12px; border-radius:9px}
+.nav .links a:hover{color:var(--text); background:var(--surface)}
+.nav .links a.active{color:#06231b; background:var(--emerald)}
+
+/* hero */
+.hero{padding:54px 0 34px; text-align:center; position:relative}
+.eyebrow{display:inline-flex; align-items:center; gap:8px; color:var(--emerald); font-weight:600;
+  font-size:13px; letter-spacing:.06em; text-transform:uppercase; border:1px solid var(--line2);
+  background:var(--surface); padding:6px 12px; border-radius:999px}
+.hero h1{font-size:clamp(30px,6vw,52px); line-height:1.05; margin:18px auto 12px; max-width:14ch}
+.hero h1 .g{background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent}
+.hero p.sub{color:var(--dim); font-size:clamp(15px,2.4vw,18px); max-width:60ch; margin:0 auto}
+.updated{color:var(--faint); font-size:13px; margin-top:14px}
+.updated .live{color:var(--emerald)} .updated .live::before{content:"●"; margin-right:5px; animation:pulse 2s infinite}
+@keyframes pulse{50%{opacity:.35}}
+
+/* podio favoritos */
+.podium{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:34px 0 8px}
+.pod{position:relative; background:linear-gradient(180deg,var(--surface2),var(--surface)); border:1px solid var(--line);
+  border-radius:18px; padding:20px 16px; text-align:center; overflow:hidden}
+.pod.first{border-color:color-mix(in srgb,var(--gold) 55%,var(--line)); box-shadow:0 0 0 1px rgba(255,210,74,.18),0 18px 50px -20px rgba(255,210,74,.35)}
+.pod .rank{position:absolute; top:10px; left:12px; font-family:'Space Grotesk'; font-weight:700; color:var(--faint); font-size:13px}
+.pod .fl{font-size:40px; line-height:1; filter:drop-shadow(0 3px 8px rgba(0,0,0,.4))}
+.pod .nm{font-weight:600; margin-top:8px; font-size:15px}
+.pod .pct{font-family:'Space Grotesk'; font-weight:700; font-size:30px; margin-top:6px}
+.pod.first .pct{color:var(--gold)} .pod .lbl{color:var(--faint); font-size:11px; text-transform:uppercase; letter-spacing:.05em}
+.pod.first .crown{position:absolute; top:-8px; right:-8px; font-size:34px; transform:rotate(18deg); opacity:.9}
+
+/* secciones */
+section.block{padding:30px 0}
+.shead{display:flex; align-items:end; justify-content:space-between; gap:12px; margin-bottom:6px; flex-wrap:wrap}
+.shead h2{font-size:clamp(20px,3vw,28px); margin:0}
+.shead .kq{color:var(--dim); font-size:14px}
+.lead{color:var(--dim); margin:2px 0 18px; max-width:70ch}
+
+/* card / chart */
+.card{background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:16px}
+.chart{position:relative; width:100%; height:440px}
+.chart.sm{height:300px}
+
+/* grid grupos */
+.grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:14px}
+.gcard{background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:14px 16px; min-width:0}
+.gcard h3{margin:0 0 10px; font-size:16px; display:flex; align-items:center; gap:8px}
+.gcard h3 .tag{margin-left:auto; font-size:11px; color:var(--faint); font-weight:500; font-family:'Inter'; letter-spacing:.04em; text-transform:uppercase}
+.team{display:flex; align-items:center; gap:9px; padding:8px 0; border-top:1px solid var(--line)}
+.team:first-of-type{border-top:none}
+.team .fl{font-size:20px; width:24px; text-align:center}
+.team .nm{flex:1; min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-size:14px}
+.team .nm small{color:var(--faint)}
+.team.q .nm{font-weight:600}
+.prob{flex:0 0 116px; display:flex; align-items:center; gap:8px}
+.bar{flex:1; height:8px; border-radius:6px; background:#1d2742; overflow:hidden}
+.bar > i{display:block; height:100%; border-radius:6px}
+.bar.hi > i{background:var(--grad)} .bar.mid > i{background:linear-gradient(90deg,#3a7bd5,#34d0ff)} .bar.lo > i{background:#46527a}
+.pn{font-family:'Space Grotesk'; font-weight:600; font-size:13px; width:38px; text-align:right; color:var(--dim)}
+.team.q .pn{color:var(--text)}
+
+/* tabla favoritos / deep-run */
+.tbl{overflow-x:auto; -webkit-overflow-scrolling:touch; border:1px solid var(--line); border-radius:16px}
+table{border-collapse:collapse; width:100%; font-size:14px; white-space:nowrap}
+th,td{padding:11px 12px; text-align:center; border-bottom:1px solid var(--line)}
+th{position:sticky; top:60px; background:var(--surface); color:var(--dim); font-weight:600; font-size:11.5px;
+  text-transform:uppercase; letter-spacing:.04em}
+th:first-child,td:first-child{text-align:left}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--surface2)}
+td.team-c{font-weight:500}
+td.team-c .fl{margin-right:8px}
+.chip{font-family:'Space Grotesk'; font-weight:700; color:#06231b; background:var(--gold); padding:2px 8px; border-radius:999px; font-size:12px}
+
+/* bracket */
+.bracket{display:flex; gap:14px; overflow-x:auto; padding:6px 2px 14px}
+.bcol{display:flex; flex-direction:column; justify-content:space-around; gap:10px; min-width:128px}
+.bcol-h{color:var(--faint); font-size:11px; text-transform:uppercase; letter-spacing:.06em; text-align:center; font-weight:600}
+.bx{background:var(--surface); border:1px solid var(--line); border-radius:11px; overflow:hidden}
+.bx-t{padding:8px 10px; font-size:13px; display:flex; align-items:center; gap:8px; white-space:nowrap}
+.bx-t + .bx-t{border-top:1px solid var(--line)}
+.bx-t.win{font-weight:700; background:linear-gradient(90deg,rgba(16,211,158,.16),transparent)}
+.bx-t.lose{color:var(--faint)}
+.bcol-champ{justify-content:center}
+.champ{background:var(--grad); color:#06231b; font-family:'Space Grotesk'; font-weight:700; border-radius:12px;
+  padding:14px 12px; text-align:center; box-shadow:0 16px 40px -16px rgba(16,211,158,.6)}
+.champ .fl{font-size:26px; display:block; margin-bottom:4px}
+
+/* responsivo nombres */
+.abbr{display:none}
+@media (max-width:620px){ .full{display:none} .abbr{display:inline} .podium{grid-template-columns:1fr 1fr 1fr; gap:8px} .pod{padding:14px 8px} .pod .pct{font-size:22px} .pod .fl{font-size:30px} }
+
+/* metodología */
+.prose{max-width:72ch}
+.prose h3{margin:26px 0 6px; font-size:18px}
+.prose p,.prose li{color:#d6deff}
+.prose code{background:var(--surface); border:1px solid var(--line); border-radius:6px; padding:1px 6px; font-size:13px}
+.steps{display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; margin:14px 0}
+.step{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:14px}
+.step .n{font-family:'Space Grotesk'; font-weight:700; color:var(--emerald)}
+.step .t{font-weight:600; margin:4px 0}
+
+/* footer */
+footer{border-top:1px solid var(--line); margin-top:40px; padding:26px 0 50px; color:var(--faint); font-size:13px}
+footer .wrap{display:flex; gap:16px; flex-wrap:wrap; align-items:center; justify-content:space-between}
+footer a{color:var(--dim)}
+
+@media (prefers-reduced-motion:reduce){ *{animation:none!important; scroll-behavior:auto} }

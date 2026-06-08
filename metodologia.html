@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#070b16">
+<title>Metodología — Pronóstico Mundial 2026</title>
+<meta name="description" content="Cómo funciona el modelo (Elo + mercado + Dixon-Coles + simulación Monte Carlo) que estima las probabilidades del Mundial 2026.">
+<link rel="canonical" href="https://pablogalazcares.github.io/mundial-2026/metodologia.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Metodología — Pronóstico Mundial 2026">
+<meta property="og:description" content="Cómo funciona el modelo (Elo + mercado + Dixon-Coles + simulación Monte Carlo) que estima las probabilidades del Mundial 2026.">
+<meta property="og:image" content="https://pablogalazcares.github.io/mundial-2026/assets/og.png">
+<meta property="og:url" content="https://pablogalazcares.github.io/mundial-2026/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Metodología — Pronóstico Mundial 2026">
+<meta name="twitter:description" content="Cómo funciona el modelo (Elo + mercado + Dixon-Coles + simulación Monte Carlo) que estima las probabilidades del Mundial 2026.">
+<meta name="twitter:image" content="https://pablogalazcares.github.io/mundial-2026/assets/og.png">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/styles.css">
+
+</head>
+<body>
+<nav class="nav"><div class="wrap">
+  <a class="brand" href="index.html"><span class="dot"></span> Pronóstico Mundial 2026</a>
+  <div class="links"><a href="index.html">Inicio</a><a href="grupos.html">Grupos</a><a href="eliminatoria.html">Camino al título</a><a href="metodologia.html" class="active">Metodología</a></div>
+</div></nav>
+<main class="wrap">
+
+  <section class="block prose">
+    <div class="shead"><h2>Metodología</h2></div>
+    <p class="lead">Un modelo abierto y reproducible que estima las probabilidades del Mundial 2026. No es una opinión: es el resultado de simular el torneo completo miles de veces.</p>
+    <div class="steps">
+      <div class="step"><div class="n">01</div><div class="t">Fuerza (Elo)</div>Cada selección tiene un rating Elo que mide su nivel; la diferencia define las tasas de gol esperadas.</div>
+      <div class="step"><div class="n">02</div><div class="t">Mercado</div>Las cuotas de las casas (consenso/Pinnacle) anclan cada partido de grupos al precio real, no solo al rating.</div>
+      <div class="step"><div class="n">03</div><div class="t">Marcadores</div>Un modelo Dixon-Coles convierte todo en una distribución de marcadores por partido.</div>
+      <div class="step"><div class="n">04</div><div class="t">Simulación</div>Se juega el torneo completo miles de veces, con el formato y el bracket oficial 2026, y se cuentan los resultados.</div>
+    </div>
+    <h3>Formato 2026</h3>
+    <p>48 selecciones, 12 grupos de 4. Avanzan los 2 primeros de cada grupo más los 8 mejores terceros (32) a Dieciseisavos, y de ahí a eliminación directa hasta la final.</p>
+    <h3>Qué significan los números</h3>
+    <p>Cada porcentaje es la fracción de simulaciones en que ocurre el evento (avanzar, llegar a una ronda, ser campeón). Se recalcula cada 4 horas con las cuotas y datos más recientes.</p>
+    <h3>Límites</h3>
+    <p>El modelo no conoce lesiones de último minuto ni el estado anímico; el anclaje al mercado mitiga parte de eso. La asignación exacta de los mejores terceros usa un emparejamiento válido que respeta los grupos elegibles de cada llave del bracket oficial.</p>
+    <h3>Fuentes</h3>
+    <p>Ratings Elo y cuotas de mercado (the-odds-api / consenso de casas). Código y bitácora de cambios, abiertos.</p>
+  </section>
+</main>
+<footer><div class="wrap">
+  <span>Modelo abierto (Elo + mercado de apuestas) · simulación de 6,000 torneos · se actualiza cada 4 h.</span>
+  <span><a href="metodologia.html">Metodología</a> · <a href="https://github.com/pablogalazcares" rel="noopener">código</a></span>
+</div></footer>
+<script>
+(function(){
+  var el=document.querySelector('[data-updated]'); if(!el) return;
+  var t=Date.parse(el.getAttribute('data-updated')); if(isNaN(t)) return;
+  var s=Math.max(0,(Date.now()-t)/1000), o;
+  if(s<3600) o=Math.round(s/60)+' min'; else if(s<86400) o=Math.round(s/3600)+' h'; else o=Math.round(s/86400)+' d';
+  el.textContent='actualizado hace '+o;
+})();
+</script>
+
+</body>
+</html>
