@@ -263,3 +263,11 @@ body.wide .wrap{max-width:1340px}
 .favrow .fbar > i{display:block; height:100%; border-radius:7px; background:var(--grad)}
 .favrow .fpct{font-family:'Space Grotesk'; font-weight:700; font-size:13px; width:48px; text-align:right; flex:0 0 auto; color:var(--text)}
 .favrow:first-child .fpct{color:var(--gold)}
+
+/* nota desplegable (cómo se reparten los terceros) */
+.note{border:1px solid var(--line); border-radius:12px; background:var(--surface); padding:0 16px; margin:0 0 18px; max-width:80ch}
+.note summary{cursor:pointer; padding:13px 0; font-weight:600; color:var(--text); font-size:14.5px; list-style:none; user-select:none}
+.note summary::-webkit-details-marker{display:none}
+.note summary::before{content:"▸ "; color:var(--emerald)}
+.note[open] summary::before{content:"▾ "}
+.note p{color:var(--dim); font-size:13.5px; padding-bottom:14px; margin:0}
