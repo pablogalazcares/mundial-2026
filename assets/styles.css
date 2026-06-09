@@ -346,17 +346,12 @@ body.wide main.wrap{max-width:1340px}
 
 .lv-chart{height:230px; margin-top:12px}
 
-/* in-play: 3 numeros (1X2) con delta + clasifica */
+/* in-play: 3 numeros (1X2) + clasifica */
 .lvnums{display:grid; grid-template-columns:repeat(3,1fr); gap:8px; max-width:430px; margin:12px auto 0}
-.lvn{text-align:center; background:#0c1320; border:1px solid #1e2a44; border-radius:12px; padding:10px 6px}
+.lvn{text-align:center; background:#0c1320; border:1px solid #1e2a44; border-radius:12px; padding:11px 6px}
 .lvn .lab{color:var(--dim); font-size:11.5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
-.lvn .v{font-family:'Space Grotesk'; font-weight:700; font-size:24px; line-height:1.2; margin-top:2px}
-.lvn.h .v{color:#34d0ff} .lvn.d .v{color:#9b8cff} .lvn.a .v{color:#ff7a45}
-.lvn .dl{display:inline-block; font-size:11px; font-weight:700; margin-top:4px; padding:1px 8px; border-radius:999px}
-.dl.up{color:#10d39e; background:rgba(16,211,158,.14)}
-.dl.dn{color:#ff5d5d; background:rgba(255,93,93,.14)}
-.dl.fl{color:var(--faint); background:#141d31}
+.lvn .v{font-family:'Space Grotesk'; font-weight:700; font-size:25px; line-height:1.2; margin-top:3px}
+.lvn.h .v{color:#34d0ff} .lvn.d .v{color:#8a93a8} .lvn.a .v{color:#fb923c}
 .lvclf{text-align:center; font-size:14px; color:var(--dim); margin-top:11px}
 .lvclf span{color:var(--faint); text-transform:uppercase; font-size:11px; letter-spacing:.05em; margin-right:4px}
 .lvclf b{color:var(--text); font-family:'Space Grotesk'}
-.lvnote{text-align:center; color:var(--faint); font-size:11px; margin-top:7px}
