@@ -386,3 +386,23 @@ body.wide main.wrap{max-width:1340px}
 .upr-vs{color:var(--faint); font-size:11px; margin:0 3px}
 .upr-f{color:var(--faint); font-size:11.5px; white-space:nowrap}
 @media (max-width:560px){ .upr-t{font-size:11px} .upr-f{display:none} }
+
+/* calendario: mini 1X2 por fila + panel de matriz al toggle */
+.mrow.clk{cursor:pointer}
+.mrow.clk:hover{background:#101a2e}
+.mrow.open{background:#101a2e; border-radius:10px 10px 0 0}
+.m123{display:flex; width:74px; height:9px; border-radius:5px; overflow:hidden; background:#1d2742; margin:0 auto}
+.m123 i{display:block; height:100%}
+.m123 .s-h{background:#34d0ff} .m123 .s-d{background:#8a93a8} .m123 .s-a{background:#fb923c}
+.mpanel{background:#0c1320; border:1px solid #1e2a44; border-top:0; border-radius:0 0 10px 10px; margin:-2px 0 4px; padding:14px}
+.mpanel-in{max-width:560px; margin:0 auto}
+.mp-1x2{display:grid; gap:7px; margin-bottom:12px}
+.mp-r{display:grid; grid-template-columns:130px 1fr auto; align-items:center; gap:10px; font-size:13px; color:var(--dim)}
+.mp-r .mp-bar{display:block; height:8px; border-radius:5px; background:#1d2742; overflow:hidden}
+.mp-r .mp-bar i{display:block; height:100%}
+.mp-r b{font-family:'Space Grotesk'; font-weight:700; color:var(--text); width:38px; text-align:right}
+.mp-sct{color:var(--faint); font-size:11px; text-transform:uppercase; letter-spacing:.05em; font-weight:600; margin-bottom:7px}
+.mp-scs{display:flex; flex-wrap:wrap; gap:7px}
+.mp-sc{background:#121a2e; border:1px solid #26304d; border-radius:8px; padding:5px 9px; font-size:12.5px; color:var(--dim)}
+.mp-sc b{color:var(--text); font-weight:600}
+.mp-link{display:inline-block; margin-top:12px; color:var(--cyan); font-size:13px; font-weight:600}
