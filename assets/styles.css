@@ -161,6 +161,7 @@ body.wide .wrap{max-width:1340px}
 .bx-t .wp{margin-left:auto; font-family:'Space Grotesk'; font-weight:700; font-size:12px; color:#06120d;
   padding:1px 7px; border-radius:999px; min-width:38px; text-align:center}
 .bx-t.lose .tt{color:var(--faint)}
+.bx-t .wp.won{background:linear-gradient(135deg,#10d39e,#34d0ff); color:#06120d; letter-spacing:.04em}
 
 /* heatmap tabla */
 .tbl.heat td{border-color:#0b1220}
