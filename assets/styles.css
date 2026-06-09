@@ -76,7 +76,7 @@ section.block{padding:30px 0}
 .team:first-of-type{border-top:none}
 .team .fl{font-size:20px; width:24px; text-align:center}
 .team .nm{flex:1; min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-size:14px}
-.team .nm small{color:var(--faint)}
+.team .nm small{display:block; font-size:11px; font-weight:400; color:var(--faint); white-space:nowrap}
 .team.q .nm{font-weight:600}
 .prob{flex:0 0 116px; display:flex; align-items:center; gap:8px}
 .bar{flex:1; height:8px; border-radius:6px; background:#1d2742; overflow:hidden}
