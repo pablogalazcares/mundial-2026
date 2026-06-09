@@ -345,3 +345,15 @@ body.wide main.wrap{max-width:1340px}
 .lpp{font-family:'Space Grotesk'; font-weight:700; font-size:13px; width:38px; text-align:right; color:var(--text)}
 
 .lv-chart{height:230px; margin-top:12px}
+
+/* in-play: 3 numeros (1X2) con delta + clasifica */
+.lvnums{display:grid; grid-template-columns:repeat(3,1fr); gap:8px; max-width:440px; margin:10px auto 0}
+.lvn{text-align:center; background:#0c1320; border:1px solid #1e2a44; border-radius:11px; padding:9px 6px}
+.lvn .lab{color:var(--faint); font-size:11px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.lvn .v{font-family:'Space Grotesk'; font-weight:700; font-size:21px; line-height:1.15}
+.lvn.h .v{color:#34d0ff} .lvn.d .v{color:#9b8cff} .lvn.a .v{color:#ff7a45}
+.lvn .dl{font-size:11px; font-weight:700; margin-top:1px}
+.dl.up{color:#10d39e} .dl.dn{color:#ff5d5d} .dl.fl{color:var(--faint)}
+.lvclf{text-align:center; color:var(--dim); font-size:12.5px; margin-top:9px}
+.lvclf span{color:var(--faint); text-transform:uppercase; font-size:11px; letter-spacing:.04em}
+.lvclf b{color:var(--text)}
