@@ -55,9 +55,8 @@
 <script>
 var ELO={"GER": 1955, "KSA": 1640, "ALG": 1780, "ARG": 2095, "AUS": 1720, "AUT": 1790, "BIH": 1705, "BRA": 2020, "BEL": 1925, "CPV": 1640, "CAN": 1730, "QAT": 1680, "COL": 1915, "KOR": 1790, "CIV": 1800, "CRO": 1900, "CUW": 1530, "ECU": 1825, "EGY": 1725, "SCO": 1775, "ESP": 2120, "USA": 1790, "FRA": 2070, "GHA": 1700, "HAI": 1535, "ENG": 2015, "IRQ": 1600, "IRN": 1800, "JPN": 1880, "JOR": 1610, "MAR": 1860, "MEX": 1810, "NOR": 1810, "NZL": 1500, "PAN": 1695, "PAR": 1730, "NED": 2010, "POR": 2005, "COD": 1700, "CZE": 1760, "SEN": 1840, "RSA": 1665, "SWE": 1795, "SUI": 1855, "TUR": 1800, "TUN": 1690, "URU": 1895, "UZB": 1660}, CFG={"base": 1.3, "k": 0.0017, "hfa": 60, "rho": -0.13, "maxg": 10}, NAME={"GER": {"n": "Alemania", "f": "🇩🇪"}, "KSA": {"n": "Arabia Saudita", "f": "🇸🇦"}, "ALG": {"n": "Argelia", "f": "🇩🇿"}, "ARG": {"n": "Argentina", "f": "🇦🇷"}, "AUS": {"n": "Australia", "f": "🇦🇺"}, "AUT": {"n": "Austria", "f": "🇦🇹"}, "BIH": {"n": "Bosnia-Herzegovina", "f": "🇧🇦"}, "BRA": {"n": "Brasil", "f": "🇧🇷"}, "BEL": {"n": "Bélgica", "f": "🇧🇪"}, "CPV": {"n": "Cabo Verde", "f": "🇨🇻"}, "CAN": {"n": "Canadá", "f": "🇨🇦"}, "QAT": {"n": "Catar", "f": "🇶🇦"}, "COL": {"n": "Colombia", "f": "🇨🇴"}, "KOR": {"n": "Corea del Sur", "f": "🇰🇷"}, "CIV": {"n": "Costa de Marfil", "f": "🇨🇮"}, "CRO": {"n": "Croacia", "f": "🇭🇷"}, "CUW": {"n": "Curazao", "f": "🇨🇼"}, "ECU": {"n": "Ecuador", "f": "🇪🇨"}, "EGY": {"n": "Egipto", "f": "🇪🇬"}, "SCO": {"n": "Escocia", "f": "🏴󠁧󠁢󠁳󠁣󠁴󠁿"}, "ESP": {"n": "España", "f": "🇪🇸"}, "USA": {"n": "Estados Unidos", "f": "🇺🇸"}, "FRA": {"n": "Francia", "f": "🇫🇷"}, "GHA": {"n": "Ghana", "f": "🇬🇭"}, "HAI": {"n": "Haití", "f": "🇭🇹"}, "ENG": {"n": "Inglaterra", "f": "🏴󠁧󠁢󠁥󠁮󠁧󠁿"}, "IRQ": {"n": "Irak", "f": "🇮🇶"}, "IRN": {"n": "Irán", "f": "🇮🇷"}, "JPN": {"n": "Japón", "f": "🇯🇵"}, "JOR": {"n": "Jordania", "f": "🇯🇴"}, "MAR": {"n": "Marruecos", "f": "🇲🇦"}, "MEX": {"n": "México", "f": "🇲🇽"}, "NOR": {"n": "Noruega", "f": "🇳🇴"}, "NZL": {"n": "Nueva Zelanda", "f": "🇳🇿"}, "PAN": {"n": "Panamá", "f": "🇵🇦"}, "PAR": {"n": "Paraguay", "f": "🇵🇾"}, "NED": {"n": "Países Bajos", "f": "🇳🇱"}, "POR": {"n": "Portugal", "f": "🇵🇹"}, "COD": {"n": "RD Congo", "f": "🇨🇩"}, "CZE": {"n": "República Checa", "f": "🇨🇿"}, "SEN": {"n": "Senegal", "f": "🇸🇳"}, "RSA": {"n": "Sudáfrica", "f": "🇿🇦"}, "SWE": {"n": "Suecia", "f": "🇸🇪"}, "SUI": {"n": "Suiza", "f": "🇨🇭"}, "TUR": {"n": "Turquía", "f": "🇹🇷"}, "TUN": {"n": "Túnez", "f": "🇹🇳"}, "URU": {"n": "Uruguay", "f": "🇺🇾"}, "UZB": {"n": "Uzbekistán", "f": "🇺🇿"}}, KO_START="2026-06-28";
 
-/* IN-PLAY: marcador + 3 numeros (gana/empate/gana) con delta ±pp vs inicio + 'clasifica'
-   en KO (empate/2) + LINEA TEMPORAL del 1X2 (ficha ESPN keyEvents, tooltip por minuto).
-   Soporta varios partidos simultaneos. ?demo=1 -> 2 partidos de ejemplo. */
+/* IN-PLAY: marcador + 3 numeros 1X2 con delta ±pp vs inicio + 'clasifica' (KO, empate/2) +
+   linea temporal (ficha ESPN). Multi-partido. ?demo=1 -> 2 ejemplos. */
 (function(){
   var SB='https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard';
   var SUM='https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/summary?event=';
@@ -86,17 +85,17 @@ var ELO={"GER": 1955, "KSA": 1640, "ALG": 1780, "ARG": 2095, "AUS": 1720, "AUT":
   }
   function scoreAt(goals,h,a,m){var x=0,y=0;goals.forEach(function(g){if(g.min<=m){if(g.team===h)x++;else if(g.team===a)y++;}});return [x,y];}
   function redAt(reds,h,a,m){var rh=false,ra=false;reds.forEach(function(r){if(r.min<=m){if(r.team===h)rh=true;else if(r.team===a)ra=true;}});return [rh,ra];}
-  function dl(d){var pp=Math.round(d*100); if(pp>=1)return '<div class="dl up">\u25b2'+pp+'</div>'; if(pp<=-1)return '<div class="dl dn">\u25bc'+(-pp)+'</div>'; return '<div class="dl fl">\u00b10</div>';}
+  function dl(d){var pp=Math.round(d*100); if(pp>=1)return '<span class="dl up">\u25b2'+pp+'</span>'; if(pp<=-1)return '<span class="dl dn">\u25bc'+(-pp)+'</span>'; return '<span class="dl fl">\u00b10</span>';}
   function numCol(cls,lab,p,d){return '<div class="lvn '+cls+'"><div class="lab">'+lab+'</div><div class="v">'+(p*100).toFixed(0)+'%</div>'+dl(d)+'</div>';}
   function barHTML(m){
     var H=NAME[m.h.ab]||{n:m.h.ab,f:''}, A=NAME[m.a.ab]||{n:m.a.ab,f:''};
     var eh=ELO[m.h.ab], ea=ELO[m.a.ab]; if(eh==null||ea==null) return '';
     var rr=redAt(m.ev?m.ev.reds:[],m.h.ab,m.a.ab,m.min), pr=probs(m.h.score,m.a.score,m.min,eh,ea,rr[0],rr[1]);
     var p0=probs(0,0,0,eh,ea,false,false);
-    var nums='<div class="lvnums">'+numCol('h','Gana '+H.f+' '+m.h.ab,pr.ph,pr.ph-p0.ph)+numCol('d','Empate',pr.pd,pr.pd-p0.pd)+numCol('a','Gana '+A.f+' '+m.a.ab,pr.pa,pr.pa-p0.pa)+'</div>';
+    var nums='<div class="lvnums">'+numCol('h',H.f+' '+m.h.ab,pr.ph,pr.ph-p0.ph)+numCol('d','Empate',pr.pd,pr.pd-p0.pd)+numCol('a',A.f+' '+m.a.ab,pr.pa,pr.pa-p0.pa)+'</div>';
     var clf='';
-    if(m.ko){ var ch=pr.ph+pr.pd/2, ca=pr.pa+pr.pd/2; clf='<div class="lvclf">Si terminan igualados va a pr\u00f3rroga/penales \u2014 <span>clasifica</span> '+H.f+' <b>'+(ch*100).toFixed(0)+'%</b> \u00b7 '+A.f+' <b>'+(ca*100).toFixed(0)+'%</b></div>'; }
-    return nums+clf+'<div class="cap" style="text-align:center">% de cada resultado en los 90 min \u00b7 \u25b2\u25bc en puntos vs. el inicio del partido</div>';
+    if(m.ko){ var ch=pr.ph+pr.pd/2, ca=pr.pa+pr.pd/2; clf='<div class="lvclf" title="Si terminan igualados, se define en pr\u00f3rroga/penales"><span>Clasifica</span> '+H.f+' <b>'+(ch*100).toFixed(0)+'%</b> \u00b7 '+A.f+' <b>'+(ca*100).toFixed(0)+'%</b></div>'; }
+    return nums+clf+'<div class="lvnote">\u25b2\u25bc vs. el inicio del partido</div>';
   }
   function cardHTML(m){
     var H=NAME[m.h.ab]||{n:m.h.ab,f:''}, A=NAME[m.a.ab]||{n:m.a.ab,f:''};
