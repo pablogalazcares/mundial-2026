@@ -23,11 +23,11 @@ a{color:var(--cyan); text-decoration:none}
 /* nav */
 .nav{position:sticky; top:0; z-index:20; backdrop-filter:saturate(160%) blur(12px);
   background:color-mix(in srgb,var(--bg) 78%,transparent); border-bottom:1px solid var(--line)}
-.nav .wrap{display:flex; align-items:center; gap:18px; height:60px}
-.brand{display:flex; align-items:center; gap:10px; font-family:'Space Grotesk'; font-weight:700; font-size:17px}
+.nav .wrap{display:flex; align-items:center; gap:14px; min-height:60px; row-gap:4px; flex-wrap:wrap}
+.brand{display:flex; align-items:center; gap:10px; font-family:'Space Grotesk'; font-weight:700; font-size:17px; flex:0 0 auto}
 .brand .dot{width:24px; height:24px; border-radius:7px; background:var(--grad); box-shadow:0 0 18px rgba(16,211,158,.5)}
-.nav .links{display:flex; gap:4px; margin-left:auto; flex-wrap:wrap}
-.nav .links a{color:var(--dim); font-weight:600; font-size:14px; padding:8px 12px; border-radius:9px}
+.nav .links{display:flex; gap:2px; margin-left:auto; flex-wrap:wrap; justify-content:flex-end}
+.nav .links a{color:var(--dim); font-weight:600; font-size:13.5px; padding:8px 10px; border-radius:9px; white-space:nowrap}
 .nav .links a:hover{color:var(--text); background:var(--surface)}
 .nav .links a.active{color:#06231b; background:var(--emerald)}
 
