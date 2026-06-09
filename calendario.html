@@ -55,9 +55,8 @@
 <script>
 var ELO={"GER": 1955, "KSA": 1640, "ALG": 1780, "ARG": 2095, "AUS": 1720, "AUT": 1790, "BIH": 1705, "BRA": 2020, "BEL": 1925, "CPV": 1640, "CAN": 1730, "QAT": 1680, "COL": 1915, "KOR": 1790, "CIV": 1800, "CRO": 1900, "CUW": 1530, "ECU": 1825, "EGY": 1725, "SCO": 1775, "ESP": 2120, "USA": 1790, "FRA": 2070, "GHA": 1700, "HAI": 1535, "ENG": 2015, "IRQ": 1600, "IRN": 1800, "JPN": 1880, "JOR": 1610, "MAR": 1860, "MEX": 1810, "NOR": 1810, "NZL": 1500, "PAN": 1695, "PAR": 1730, "NED": 2010, "POR": 2005, "COD": 1700, "CZE": 1760, "SEN": 1840, "RSA": 1665, "SWE": 1795, "SUI": 1855, "TUR": 1800, "TUN": 1690, "URU": 1895, "UZB": 1660}, CFG={"base": 1.3, "k": 0.0017, "hfa": 60, "rho": -0.13, "maxg": 10}, NAME={"GER": {"n": "Alemania", "f": "🇩🇪"}, "KSA": {"n": "Arabia Saudita", "f": "🇸🇦"}, "ALG": {"n": "Argelia", "f": "🇩🇿"}, "ARG": {"n": "Argentina", "f": "🇦🇷"}, "AUS": {"n": "Australia", "f": "🇦🇺"}, "AUT": {"n": "Austria", "f": "🇦🇹"}, "BIH": {"n": "Bosnia-Herzegovina", "f": "🇧🇦"}, "BRA": {"n": "Brasil", "f": "🇧🇷"}, "BEL": {"n": "Bélgica", "f": "🇧🇪"}, "CPV": {"n": "Cabo Verde", "f": "🇨🇻"}, "CAN": {"n": "Canadá", "f": "🇨🇦"}, "QAT": {"n": "Catar", "f": "🇶🇦"}, "COL": {"n": "Colombia", "f": "🇨🇴"}, "KOR": {"n": "Corea del Sur", "f": "🇰🇷"}, "CIV": {"n": "Costa de Marfil", "f": "🇨🇮"}, "CRO": {"n": "Croacia", "f": "🇭🇷"}, "CUW": {"n": "Curazao", "f": "🇨🇼"}, "ECU": {"n": "Ecuador", "f": "🇪🇨"}, "EGY": {"n": "Egipto", "f": "🇪🇬"}, "SCO": {"n": "Escocia", "f": "🏴󠁧󠁢󠁳󠁣󠁴󠁿"}, "ESP": {"n": "España", "f": "🇪🇸"}, "USA": {"n": "Estados Unidos", "f": "🇺🇸"}, "FRA": {"n": "Francia", "f": "🇫🇷"}, "GHA": {"n": "Ghana", "f": "🇬🇭"}, "HAI": {"n": "Haití", "f": "🇭🇹"}, "ENG": {"n": "Inglaterra", "f": "🏴󠁧󠁢󠁥󠁮󠁧󠁿"}, "IRQ": {"n": "Irak", "f": "🇮🇶"}, "IRN": {"n": "Irán", "f": "🇮🇷"}, "JPN": {"n": "Japón", "f": "🇯🇵"}, "JOR": {"n": "Jordania", "f": "🇯🇴"}, "MAR": {"n": "Marruecos", "f": "🇲🇦"}, "MEX": {"n": "México", "f": "🇲🇽"}, "NOR": {"n": "Noruega", "f": "🇳🇴"}, "NZL": {"n": "Nueva Zelanda", "f": "🇳🇿"}, "PAN": {"n": "Panamá", "f": "🇵🇦"}, "PAR": {"n": "Paraguay", "f": "🇵🇾"}, "NED": {"n": "Países Bajos", "f": "🇳🇱"}, "POR": {"n": "Portugal", "f": "🇵🇹"}, "COD": {"n": "RD Congo", "f": "🇨🇩"}, "CZE": {"n": "República Checa", "f": "🇨🇿"}, "SEN": {"n": "Senegal", "f": "🇸🇳"}, "RSA": {"n": "Sudáfrica", "f": "🇿🇦"}, "SWE": {"n": "Suecia", "f": "🇸🇪"}, "SUI": {"n": "Suiza", "f": "🇨🇭"}, "TUR": {"n": "Turquía", "f": "🇹🇷"}, "TUN": {"n": "Túnez", "f": "🇹🇳"}, "URU": {"n": "Uruguay", "f": "🇺🇾"}, "UZB": {"n": "Uzbekistán", "f": "🇺🇿"}}, KO_START="2026-06-28";
 
-/* IN-PLAY: barra del instante + linea temporal de probabilidad (estilo 538). El navegador
-   pollea ESPN (scoreboard + ficha keyEvents; CORS abierto) y reconstruye la curva minuto a
-   minuto. Gol -> salto; roja -> ajusta tasas; amarilla -> solo marcador. */
+/* IN-PLAY: barra (1X2 + clasificar en KO) + LINEA TEMPORAL del 1X2; ficha ESPN keyEvents;
+   tooltip por minuto; ?demo=1 -> ejemplo. */
 (function(){
   var SB='https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard';
   var SUM='https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/summary?event=';
@@ -66,6 +65,7 @@ var ELO={"GER": 1955, "KSA": 1640, "ALG": 1780, "ARG": 2095, "AUS": 1720, "AUT":
   function fact(n){var f=1;for(var i=2;i<=n;i++)f*=i;return f;}
   function pois(l,n){return Math.pow(l,n)*Math.exp(-l)/fact(n);}
   function pens(eh,ea){return 1/(1+Math.pow(10,-(eh-ea)/400));}
+  function tname(ab){var n=NAME[ab];return n?n.n:ab;}
   function probs(ch,ca,min,eh,ea,rh,ra){
     var dr=eh-ea, lh=CFG.base*Math.exp(CFG.k*dr), la=CFG.base*Math.exp(-CFG.k*dr), rem=Math.max(0,(90-min)/90);
     lh*=rem; la*=rem; if(rh){lh*=0.72;la*=1.10;} if(ra){la*=0.72;lh*=1.10;}
@@ -78,9 +78,9 @@ var ELO={"GER": 1955, "KSA": 1640, "ALG": 1780, "ARG": 2095, "AUS": 1720, "AUT":
     var goals=[],reds=[],marks=[];
     (ke||[]).forEach(function(e){
       var tp=(((e.type||{}).text)||'').toLowerCase(), tm=(e.team||{}).abbreviation, mn=pmin((e.clock||{}).displayValue);
-      if(tp.indexOf('goal')>=0 && tp.indexOf('miss')<0 && tp.indexOf('disallow')<0 && tp.indexOf('no goal')<0){ goals.push({min:mn,team:tm}); marks.push({x:mn,t:'⚽',c:'#34d0ff'}); }
-      else if(tp.indexOf('red')>=0){ reds.push({min:mn,team:tm}); marks.push({x:mn,t:'🟥',c:'#ff5d5d'}); }
-      else if(tp.indexOf('yellow')>=0){ marks.push({x:mn,t:'🟨',c:'#ffd24a'}); }
+      if(tp.indexOf('goal')>=0 && tp.indexOf('miss')<0 && tp.indexOf('disallow')<0 && tp.indexOf('no goal')<0){ goals.push({min:mn,team:tm}); marks.push({x:mn,t:'⚽',c:'#34d0ff',lab:'Gol de '+tname(tm)}); }
+      else if(tp.indexOf('red')>=0){ reds.push({min:mn,team:tm}); marks.push({x:mn,t:'🟥',c:'#ff5d5d',lab:'Roja a '+tname(tm)}); }
+      else if(tp.indexOf('yellow')>=0){ marks.push({x:mn,t:'🟨',c:'#ffd24a',lab:'Amarilla a '+tname(tm)}); }
     });
     return {goals:goals,reds:reds,marks:marks};
   }
@@ -91,15 +91,14 @@ var ELO={"GER": 1955, "KSA": 1640, "ALG": 1780, "ARG": 2095, "AUS": 1720, "AUT":
     var H=NAME[m.h.ab]||{n:m.h.ab,f:''}, A=NAME[m.a.ab]||{n:m.a.ab,f:''};
     var eh=ELO[m.h.ab], ea=ELO[m.a.ab]; if(eh==null||ea==null) return '';
     var rr=redAt(m.ev?m.ev.reds:[],m.h.ab,m.a.ab,m.min), pr=probs(m.h.score,m.a.score,m.min,eh,ea,rr[0],rr[1]);
-    if(m.ko){ var wt=pr.ph+pr.pd*pens(eh,ea);
-      return '<div class="lprob"><div class="lpr"><span>Gana '+H.f+' '+m.h.ab+'</span>'+pbar(wt,'h')+'</div>'+
-        '<div class="lpr"><span>Gana '+A.f+' '+m.a.ab+'</span>'+pbar(1-wt,'a')+'</div>'+
-        '<div class="cap">prob. de ganar la llave (incl. prórroga/penales) · en vivo</div></div>';
-    }
-    return '<div class="lprob"><div class="lpr"><span>Gana '+H.f+' '+m.h.ab+'</span>'+pbar(pr.ph,'h')+'</div>'+
+    var rows='<div class="lpr"><span>Gana '+H.f+' '+m.h.ab+'</span>'+pbar(pr.ph,'h')+'</div>'+
       '<div class="lpr"><span>Empate</span>'+pbar(pr.pd,'d')+'</div>'+
-      '<div class="lpr"><span>Gana '+A.f+' '+m.a.ab+'</span>'+pbar(pr.pa,'a')+'</div>'+
-      '<div class="cap">probabilidad en vivo · modelo (sin mercado); se mueve con marcador, tiempo y rojas</div></div>';
+      '<div class="lpr"><span>Gana '+A.f+' '+m.a.ab+'</span>'+pbar(pr.pa,'a')+'</div>';
+    var cap;
+    if(m.ko){ var wt=pr.ph+pr.pd*pens(eh,ea);
+      cap='<div class="cap">resultado en los 90 minutos · si terminan igualados va a prórroga/penales — <b>clasifica</b>: '+H.f+' '+(wt*100).toFixed(0)+'% · '+A.f+' '+((1-wt)*100).toFixed(0)+'%</div>';
+    } else { cap='<div class="cap">probabilidad en vivo · modelo (sin mercado); se mueve con marcador, tiempo y rojas</div>'; }
+    return '<div class="lprob">'+rows+cap+'</div>';
   }
   function cardHTML(m){
     var H=NAME[m.h.ab]||{n:m.h.ab,f:''}, A=NAME[m.a.ab]||{n:m.a.ab,f:''};
@@ -114,17 +113,20 @@ var ELO={"GER": 1955, "KSA": 1640, "ALG": 1780, "ARG": 2095, "AUS": 1720, "AUT":
     var maxM=Math.max(m.min,1), xs=[], H=[], D=[], A2=[];
     for(var mm=0;mm<=maxM;mm++){
       var sc=scoreAt(m.ev.goals,m.h.ab,m.a.ab,mm), rr=redAt(m.ev.reds,m.h.ab,m.a.ab,mm), p=probs(sc[0],sc[1],mm,eh,ea,rr[0],rr[1]);
-      xs.push(mm);
-      if(m.ko){var wt=p.ph+p.pd*pens(eh,ea);H.push(+(wt*100).toFixed(1));A2.push(+((1-wt)*100).toFixed(1));}
-      else {H.push(+(p.ph*100).toFixed(1));D.push(+(p.pd*100).toFixed(1));A2.push(+(p.pa*100).toFixed(1));}
+      xs.push(mm); H.push(+(p.ph*100).toFixed(1)); D.push(+(p.pd*100).toFixed(1)); A2.push(+(p.pa*100).toFixed(1));
     }
     var Hn=NAME[m.h.ab]||{n:m.h.ab}, An=NAME[m.a.ab]||{n:m.a.ab};
-    var marks=m.ev.marks.map(function(e){return {xAxis:e.x,label:{formatter:e.t,fontSize:11,color:'#cdd6f4',position:'insideEndTop'},lineStyle:{color:e.c,type:'dashed',opacity:.7,width:1.4}};});
-    var ser=[{name:Hn.n,type:'line',data:H,symbol:'none',lineStyle:{color:'#34d0ff',width:2.4},areaStyle:{color:'rgba(52,208,255,.10)'},markLine:{symbol:'none',silent:true,data:marks}}];
-    if(!m.ko) ser.push({name:'Empate',type:'line',data:D,symbol:'none',lineStyle:{color:'#6b7798',width:1.5,type:'dashed'}});
-    ser.push({name:An.n,type:'line',data:A2,symbol:'none',lineStyle:{color:'#ff7a45',width:2.4},areaStyle:{color:'rgba(255,122,69,.07)'}});
+    var EV={}; m.ev.marks.forEach(function(e){ EV[e.x]=(EV[e.x]?EV[e.x]+' · ':'')+e.t+' '+(e.lab||''); });
+    var mldata=m.ev.marks.map(function(e){return {xAxis:e.x, lineStyle:{color:e.c,type:'dashed',opacity:.6,width:1.4}, label:{formatter:e.t, rotate:0, position:'insideEndTop', distance:3, fontSize:13, color:'#cdd6f4'}};});
+    var ser=[
+      {name:'Gana '+Hn.n,type:'line',data:H,symbol:'none',itemStyle:{color:'#34d0ff'},lineStyle:{color:'#34d0ff',width:2.4},areaStyle:{color:'rgba(52,208,255,.10)'},markLine:{symbol:'none',silent:true,data:mldata}},
+      {name:'Empate',type:'line',data:D,symbol:'none',itemStyle:{color:'#9b8cff'},lineStyle:{color:'#9b8cff',width:1.7,type:'dashed'}},
+      {name:'Gana '+An.n,type:'line',data:A2,symbol:'none',itemStyle:{color:'#ff7a45'},lineStyle:{color:'#ff7a45',width:2.4},areaStyle:{color:'rgba(255,122,69,.07)'}}
+    ];
     var ch=echarts.getInstanceByDom(el)||echarts.init(el);
-    ch.setOption({grid:{left:34,right:12,top:14,bottom:24},tooltip:{trigger:'axis'},
+    ch.setOption({grid:{left:34,right:14,top:40,bottom:24},legend:{data:['Gana '+Hn.n,'Empate','Gana '+An.n],top:8,right:10,itemWidth:14,itemHeight:8,textStyle:{color:'#9aa7cc',fontSize:11},icon:'roundRect'},
+      tooltip:{trigger:'axis',backgroundColor:'#0e1626',borderColor:'#26304d',textStyle:{color:'#eaf0ff',fontSize:12},
+        formatter:function(ps){var mm=ps[0].axisValue;var s="<b>Minuto "+mm+"'</b>";ps.forEach(function(p){s+='<br>'+p.marker+p.seriesName+': <b>'+p.value+'%</b>';});if(EV[mm])s+='<br><span style="color:#9aa7cc">'+EV[mm]+'</span>';return s;}},
       xAxis:{type:'category',data:xs,boundaryGap:false,axisLabel:{color:'#6b7798',formatter:function(v){return v==0?'0':(v==45?'Mitad':(v>=90?'Final':''));}},axisLine:{lineStyle:{color:'#26304d'}},axisTick:{show:false}},
       yAxis:{type:'value',min:0,max:100,interval:50,axisLabel:{color:'#6b7798'},axisLine:{show:false},splitLine:{lineStyle:{color:'#16203a'}}},
       series:ser},true);
@@ -132,6 +134,18 @@ var ELO={"GER": 1955, "KSA": 1640, "ALG": 1780, "ARG": 2095, "AUS": 1720, "AUT":
   var timer=null;
   function sched(ms){clearTimeout(timer);timer=setTimeout(poll,ms);}
   function disposeCharts(){ if(!window.echarts) return; var ns=document.querySelectorAll('.lv-chart'); for(var i=0;i<ns.length;i++){var ins=echarts.getInstanceByDom(ns[i]); if(ins) ins.dispose();} }
+  function renderAll(live, head){
+    var w=document.getElementById('livewrap'); if(!w) return;
+    disposeCharts();
+    w.innerHTML='<div class="livehead">'+head+'</div>'+live.map(cardHTML).join('');
+    ech().then(function(){ live.forEach(drawChart); }).catch(function(){});
+  }
+  function demo(){
+    var m={id:'demo',h:{ab:'ARG',score:1},a:{ab:'BRA',score:1},min:80,clock:"80'",ko:true,
+      ev:{goals:[{min:22,team:'ARG'},{min:78,team:'BRA'}],reds:[{min:57,team:'ARG'}],
+      marks:[{x:22,t:'⚽',c:'#34d0ff',lab:'Gol de Argentina (1-0)'},{x:41,t:'🟨',c:'#ffd24a',lab:'Amarilla a Brasil'},{x:57,t:'🟥',c:'#ff5d5d',lab:'Roja a Argentina'},{x:78,t:'⚽',c:'#ff7a45',lab:'Gol de Brasil (1-1)'}]}};
+    renderAll([m], 'Demo · partido de ejemplo (no es un partido real)');
+  }
   function poll(){
     fetch(SB).then(function(r){return r.json();}).then(function(d){
       var live=[];
@@ -148,15 +162,10 @@ var ELO={"GER": 1955, "KSA": 1640, "ALG": 1780, "ARG": 2095, "AUS": 1720, "AUT":
       if(!live.length){ disposeCharts(); w.innerHTML=''; sched(180000); return; }
       Promise.all(live.map(function(m){
         return fetch(SUM+m.id).then(function(r){return r.json();}).then(function(s){ m.ev=parseEv(s.keyEvents,m.h.ab,m.a.ab); }).catch(function(){ m.ev={goals:[],reds:[],marks:[]}; });
-      })).then(function(){
-        disposeCharts();
-        w.innerHTML='<div class="livehead">En vivo ahora</div>'+live.map(cardHTML).join('');
-        ech().then(function(){ live.forEach(drawChart); }).catch(function(){});
-        sched(30000);
-      });
+      })).then(function(){ renderAll(live,'En vivo ahora'); sched(30000); });
     }).catch(function(){sched(180000);});
   }
-  poll();
+  if(/[?&]demo/.test(location.search)) demo(); else poll();
 })();
 
 </script>

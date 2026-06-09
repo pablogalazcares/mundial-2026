@@ -341,7 +341,7 @@ body.wide main.wrap{max-width:1340px}
 .lpr{display:grid; grid-template-columns:120px 1fr auto; align-items:center; gap:8px; font-size:13px; color:var(--dim)}
 .lpbar{height:8px; border-radius:6px; background:#1d2742; overflow:hidden}
 .lpbar > i{display:block; height:100%; border-radius:6px}
-.lpbar.h > i{background:var(--grad)} .lpbar.d > i{background:#46527a} .lpbar.a > i{background:linear-gradient(90deg,#3a7bd5,#34d0ff)}
+.lpbar.h > i{background:linear-gradient(90deg,#10d39e,#34d0ff)} .lpbar.d > i{background:#9b8cff} .lpbar.a > i{background:#ff7a45}
 .lpp{font-family:'Space Grotesk'; font-weight:700; font-size:13px; width:38px; text-align:right; color:var(--text)}
 
 .lv-chart{height:230px; margin-top:12px}
