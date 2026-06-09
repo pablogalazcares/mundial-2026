@@ -31,11 +31,21 @@
 <main class="wrap">
 
   <div id="livebanner" class="livebanner"></div>
+
+  <a href="demo_simulador.html" style="display:flex;align-items:center;gap:14px;text-decoration:none;margin:0 0 18px;padding:14px 18px;border:1px solid #2a6b50;border-radius:14px;background:linear-gradient(100deg,rgba(70,211,162,.12),rgba(70,211,162,.03));color:inherit">
+    <span style="font-size:11px;font-weight:800;letter-spacing:.05em;color:#070b16;background:#46d3a2;padding:3px 9px;border-radius:7px;flex:none">DEMO</span>
+    <span style="flex:1;min-width:0">
+      <strong style="display:block;font-size:15px">🎮 Simulador interactivo del Mundial</strong>
+      <span style="font-size:13px;color:#8aa0c2">Fijá resultados partido por partido y mirá, en vivo, cómo cambian las probabilidades de campeón y de avance.</span>
+    </span>
+    <span style="flex:none;font-weight:700;color:#46d3a2">Probar →</span>
+  </a>
+
   <section class="hero">
     <span class="eyebrow">⚽ Probabilidades en vivo</span>
     <h1>¿Quién gana el <span class="g">Mundial 2026</span>?</h1>
     <p class="sub">Las probabilidades de cada selección según un modelo ensamblado que mezcla datos de partidos, el mercado de apuestas y la actualidad, y simula el torneo completo miles de veces.</p>
-    <div class="updated"><span class="live">en vivo</span> · <span data-updated="2026-06-09T18:33:08.311526+00:00">actualizado</span></div>
+    <div class="updated">Última actualización · <span data-updated="2026-06-09T18:33:08.311526+00:00">recién</span></div>
     <div class="podium"><div class="pod first"><div class="crown">👑</div><div class="rank">1º</div><div class="fl">🇪🇸</div><div class="nm">España</div><div class="pct">15.9%</div><div class="lbl">campeón</div></div><div class="pod "><div class="rank">2º</div><div class="fl">🇦🇷</div><div class="nm">Argentina</div><div class="pct">14.0%</div><div class="lbl">campeón</div></div><div class="pod "><div class="rank">3º</div><div class="fl">🇫🇷</div><div class="nm">Francia</div><div class="pct">12.3%</div><div class="lbl">campeón</div></div></div>
   </section>
 
@@ -110,7 +120,7 @@
   var t=Date.parse(el.getAttribute('data-updated')); if(isNaN(t)) return;
   var s=Math.max(0,(Date.now()-t)/1000), o;
   if(s<3600) o=Math.round(s/60)+' min'; else if(s<86400) o=Math.round(s/3600)+' h'; else o=Math.round(s/86400)+' d';
-  el.textContent='actualizado hace '+o;
+  el.textContent='hace '+o;
 })();
 </script>
 <script>

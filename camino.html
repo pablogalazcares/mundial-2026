@@ -51,7 +51,7 @@
   var t=Date.parse(el.getAttribute('data-updated')); if(isNaN(t)) return;
   var s=Math.max(0,(Date.now()-t)/1000), o;
   if(s<3600) o=Math.round(s/60)+' min'; else if(s<86400) o=Math.round(s/3600)+' h'; else o=Math.round(s/86400)+' d';
-  el.textContent='actualizado hace '+o;
+  el.textContent='hace '+o;
 })();
 </script>
 <script>
