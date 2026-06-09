@@ -55,8 +55,8 @@
 <script>
 var ELO={"GER": 1955, "KSA": 1640, "ALG": 1780, "ARG": 2095, "AUS": 1720, "AUT": 1790, "BIH": 1705, "BRA": 2020, "BEL": 1925, "CPV": 1640, "CAN": 1730, "QAT": 1680, "COL": 1915, "KOR": 1790, "CIV": 1800, "CRO": 1900, "CUW": 1530, "ECU": 1825, "EGY": 1725, "SCO": 1775, "ESP": 2120, "USA": 1790, "FRA": 2070, "GHA": 1700, "HAI": 1535, "ENG": 2015, "IRQ": 1600, "IRN": 1800, "JPN": 1880, "JOR": 1610, "MAR": 1860, "MEX": 1810, "NOR": 1810, "NZL": 1500, "PAN": 1695, "PAR": 1730, "NED": 2010, "POR": 2005, "COD": 1700, "CZE": 1760, "SEN": 1840, "RSA": 1665, "SWE": 1795, "SUI": 1855, "TUR": 1800, "TUN": 1690, "URU": 1895, "UZB": 1660}, CFG={"base": 1.3, "k": 0.0017, "hfa": 60, "rho": -0.13, "maxg": 10}, NAME={"GER": {"n": "Alemania", "f": "🇩🇪"}, "KSA": {"n": "Arabia Saudita", "f": "🇸🇦"}, "ALG": {"n": "Argelia", "f": "🇩🇿"}, "ARG": {"n": "Argentina", "f": "🇦🇷"}, "AUS": {"n": "Australia", "f": "🇦🇺"}, "AUT": {"n": "Austria", "f": "🇦🇹"}, "BIH": {"n": "Bosnia-Herzegovina", "f": "🇧🇦"}, "BRA": {"n": "Brasil", "f": "🇧🇷"}, "BEL": {"n": "Bélgica", "f": "🇧🇪"}, "CPV": {"n": "Cabo Verde", "f": "🇨🇻"}, "CAN": {"n": "Canadá", "f": "🇨🇦"}, "QAT": {"n": "Catar", "f": "🇶🇦"}, "COL": {"n": "Colombia", "f": "🇨🇴"}, "KOR": {"n": "Corea del Sur", "f": "🇰🇷"}, "CIV": {"n": "Costa de Marfil", "f": "🇨🇮"}, "CRO": {"n": "Croacia", "f": "🇭🇷"}, "CUW": {"n": "Curazao", "f": "🇨🇼"}, "ECU": {"n": "Ecuador", "f": "🇪🇨"}, "EGY": {"n": "Egipto", "f": "🇪🇬"}, "SCO": {"n": "Escocia", "f": "🏴󠁧󠁢󠁳󠁣󠁴󠁿"}, "ESP": {"n": "España", "f": "🇪🇸"}, "USA": {"n": "Estados Unidos", "f": "🇺🇸"}, "FRA": {"n": "Francia", "f": "🇫🇷"}, "GHA": {"n": "Ghana", "f": "🇬🇭"}, "HAI": {"n": "Haití", "f": "🇭🇹"}, "ENG": {"n": "Inglaterra", "f": "🏴󠁧󠁢󠁥󠁮󠁧󠁿"}, "IRQ": {"n": "Irak", "f": "🇮🇶"}, "IRN": {"n": "Irán", "f": "🇮🇷"}, "JPN": {"n": "Japón", "f": "🇯🇵"}, "JOR": {"n": "Jordania", "f": "🇯🇴"}, "MAR": {"n": "Marruecos", "f": "🇲🇦"}, "MEX": {"n": "México", "f": "🇲🇽"}, "NOR": {"n": "Noruega", "f": "🇳🇴"}, "NZL": {"n": "Nueva Zelanda", "f": "🇳🇿"}, "PAN": {"n": "Panamá", "f": "🇵🇦"}, "PAR": {"n": "Paraguay", "f": "🇵🇾"}, "NED": {"n": "Países Bajos", "f": "🇳🇱"}, "POR": {"n": "Portugal", "f": "🇵🇹"}, "COD": {"n": "RD Congo", "f": "🇨🇩"}, "CZE": {"n": "República Checa", "f": "🇨🇿"}, "SEN": {"n": "Senegal", "f": "🇸🇳"}, "RSA": {"n": "Sudáfrica", "f": "🇿🇦"}, "SWE": {"n": "Suecia", "f": "🇸🇪"}, "SUI": {"n": "Suiza", "f": "🇨🇭"}, "TUR": {"n": "Turquía", "f": "🇹🇷"}, "TUN": {"n": "Túnez", "f": "🇹🇳"}, "URU": {"n": "Uruguay", "f": "🇺🇾"}, "UZB": {"n": "Uzbekistán", "f": "🇺🇿"}}, KO_START="2026-06-28";
 
-/* IN-PLAY: marcador + 3 numeros 1X2 + 'clasifica' (KO) + linea temporal (eje fijo 0-90,
-   linea solida hasta el minuto actual). Paleta fija: local/visita/empate. Multi-partido. ?demo=1. */
+/* IN-PLAY: marcador + 3 numeros 1X2 + clasificar (KO) + AREA APILADA 100% (gana local
+   arriba / empate medio / gana visita abajo; eje fijo 0-90). Multi-partido. ?demo=1. */
 (function(){
   var SB='https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard';
   var SUM='https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/summary?event=';
@@ -113,17 +113,14 @@ var ELO={"GER": 1955, "KSA": 1640, "ALG": 1780, "ARG": 2095, "AUS": 1720, "AUT":
     }
     var Hn=NAME[m.h.ab]||{n:m.h.ab}, An=NAME[m.a.ab]||{n:m.a.ab};
     var EV={}; m.ev.marks.forEach(function(e){ EV[e.x]=(EV[e.x]?EV[e.x]+' · ':'')+e.t+' '+(e.lab||''); });
-    var mldata=m.ev.marks.map(function(e){return {xAxis:e.x, lineStyle:{color:'#566080',type:'dashed',opacity:.55,width:1.2}, label:{formatter:e.t, rotate:0, position:'insideEndTop', distance:3, fontSize:13, color:'#cdd6f4'}};});
-    var ser=[
-      {name:'Gana '+Hn.n,type:'line',data:H,symbol:'none',itemStyle:{color:C1},lineStyle:{color:C1,width:2.6},markLine:{symbol:'none',silent:true,data:mldata}},
-      {name:'Empate',type:'line',data:D,symbol:'none',itemStyle:{color:CD},lineStyle:{color:CD,width:1.8}},
-      {name:'Gana '+An.n,type:'line',data:A2,symbol:'none',itemStyle:{color:C2},lineStyle:{color:C2,width:2.6}}
-    ];
+    var mldata=m.ev.marks.map(function(e){return {xAxis:e.x, lineStyle:{color:'#e8edf9',type:'dashed',opacity:.5,width:1.2}, label:{formatter:e.t, rotate:0, position:'insideEndTop', distance:3, fontSize:13, color:'#eaf0ff'}};});
+    function band(nm,dt,col,op,ml){var o={name:nm,type:'line',stack:'p',data:dt,symbol:'none',itemStyle:{color:col},lineStyle:{color:col,width:1.4},areaStyle:{color:col,opacity:op}}; if(ml)o.markLine={symbol:'none',silent:true,data:mldata}; return o;}
+    var ser=[ band('Gana '+An.n,A2,C2,0.72,true), band('Empate',D,CD,0.62), band('Gana '+Hn.n,H,C1,0.72) ];
     var ch=echarts.getInstanceByDom(el)||echarts.init(el);
     ch.setOption({grid:{left:34,right:14,top:40,bottom:24},
       legend:{data:['Gana '+Hn.n,'Empate','Gana '+An.n],top:8,right:10,itemWidth:14,itemHeight:8,textStyle:{color:'#9aa7cc',fontSize:11},icon:'roundRect'},
       tooltip:{trigger:'axis',backgroundColor:'#0e1626',borderColor:'#26304d',textStyle:{color:'#eaf0ff',fontSize:12},
-        formatter:function(ps){var mm=Math.round(ps[0].axisValue);var s="<b>Minuto "+mm+"'</b>";ps.forEach(function(p){s+='<br>'+p.marker+p.seriesName+': <b>'+Math.round(p.value[1])+'%</b>';});if(EV[mm])s+='<br><span style="color:#9aa7cc">'+EV[mm]+'</span>';return s;}},
+        formatter:function(ps){var mm=Math.round(ps[0].axisValue);var s="<b>Minuto "+mm+"'</b>";ps.slice().reverse().forEach(function(p){s+='<br>'+p.marker+p.seriesName+': <b>'+Math.round(p.value[1])+'%</b>';});if(EV[mm])s+='<br><span style="color:#9aa7cc">'+EV[mm]+'</span>';return s;}},
       xAxis:{type:'value',min:0,max:full,interval:45,axisLabel:{color:'#6b7798',formatter:function(v){return v==0?'0':(v==45?'Mitad':v+"'");}},axisLine:{lineStyle:{color:'#26304d'}},axisTick:{show:false}},
       yAxis:{type:'value',min:0,max:100,interval:50,axisLabel:{color:'#6b7798'},axisLine:{show:false},splitLine:{lineStyle:{color:'#16203a'}}},
       series:ser},true);
