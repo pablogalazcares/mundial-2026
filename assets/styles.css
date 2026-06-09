@@ -163,6 +163,11 @@ body.wide main.wrap{max-width:1340px}
   padding:1px 7px; border-radius:999px; min-width:38px; text-align:center}
 .bx-t.lose .tt{color:var(--faint)}
 .bx-t .wp.won{background:linear-gradient(135deg,#10d39e,#34d0ff); color:#06120d; letter-spacing:.04em}
+/* Dieciseisavos lleva el origen de llave (1°C): mas ancho para que el % respire */
+.bcol:first-child{min-width:188px}
+.bcol:first-child .bx{width:188px}
+.bcol:first-child .bx-t{gap:7px; padding:8px 11px}
+.bcol:first-child .bx-t .tt{margin-right:4px}
 
 /* heatmap tabla */
 .tbl.heat td{border-color:#0b1220}
@@ -241,6 +246,8 @@ body.wide main.wrap{max-width:1340px}
   .bcol-body{gap:26px}
   .bcol{min-width:158px}
   .bcol .bx{width:148px}
+  .bcol:first-child{min-width:178px}
+  .bcol:first-child .bx{width:178px}
 
   /* gráfico de favoritos con más alto para que respiren las barras */
   .chart{height:520px}
