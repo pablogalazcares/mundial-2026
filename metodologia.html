@@ -5,16 +5,16 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#070b16">
 <title>Metodología — Pronóstico Mundial 2026</title>
-<meta name="description" content="Un modelo ensamblado que mezcla datos de partidos, mercado y actualidad, con machine learning e IA, y simula el Mundial 2026 miles de veces.">
+<meta name="description" content="Un ensamble de modelos estadísticos (Elo, Dixon-Coles), el mercado de apuestas (de-vig de Shin) y ajustes por IA, simulando el Mundial 2026 miles de veces.">
 <link rel="canonical" href="https://pablogalazcares.github.io/mundial-2026/metodologia.html">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Metodología — Pronóstico Mundial 2026">
-<meta property="og:description" content="Un modelo ensamblado que mezcla datos de partidos, mercado y actualidad, con machine learning e IA, y simula el Mundial 2026 miles de veces.">
+<meta property="og:description" content="Un ensamble de modelos estadísticos (Elo, Dixon-Coles), el mercado de apuestas (de-vig de Shin) y ajustes por IA, simulando el Mundial 2026 miles de veces.">
 <meta property="og:image" content="https://pablogalazcares.github.io/mundial-2026/assets/og.png">
 <meta property="og:url" content="https://pablogalazcares.github.io/mundial-2026/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Metodología — Pronóstico Mundial 2026">
-<meta name="twitter:description" content="Un modelo ensamblado que mezcla datos de partidos, mercado y actualidad, con machine learning e IA, y simula el Mundial 2026 miles de veces.">
+<meta name="twitter:description" content="Un ensamble de modelos estadísticos (Elo, Dixon-Coles), el mercado de apuestas (de-vig de Shin) y ajustes por IA, simulando el Mundial 2026 miles de veces.">
 <meta name="twitter:image" content="https://pablogalazcares.github.io/mundial-2026/assets/og.png">
 <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/styles.css">
@@ -30,19 +30,20 @@
 
   <section class="block prose">
     <div class="shead"><h2>Metodología</h2></div>
-    <p class="lead">No es una opinión ni un palpito. Es un <b>modelo ensamblado</b> que mezcla muchas fuentes de datos, las calibra y simula el Mundial completo miles de veces para estimar las probabilidades de cada selección.</p>
+    <p class="lead">No es un palpito. Es un <b>ensamble</b> que combina modelos estadísticos y de aprendizaje con el mercado de apuestas y la actualidad —esto último vía IA—, y simula el Mundial completo miles de veces para estimar las probabilidades de cada selección.</p>
     <div class="steps">
-      <div class="step"><div class="n">01</div><div class="t">Muchas fuentes</div>Partidos oficiales y amistosos, la fuerza histórica de cada selección y las cuotas de las casas de apuestas, todo combinado en una sola señal.</div>
-      <div class="step"><div class="n">02</div><div class="t">La actualidad, en vivo</div>Un monitoreo de noticias en la web —apoyado en herramientas de IA— ajusta por lesiones, rotaciones, momento y contexto de cada equipo.</div>
-      <div class="step"><div class="n">03</div><div class="t">Ensamble + machine learning</div>Un motor de <i>machine learning</i> y optimización calibra y combina las señales; ningún dato manda solo, se busca el mejor consenso.</div>
-      <div class="step"><div class="n">04</div><div class="t">Simulación masiva</div>Se juega el torneo completo miles de veces, con el formato y el bracket oficial 2026, y se cuentan los resultados.</div>
+      <div class="step"><div class="n">01</div><div class="t">Fuerza de cada selección</div>Un rating tipo Elo que aprende del historial de partidos —oficiales y amistosos— y mide el nivel real de cada equipo.</div>
+      <div class="step"><div class="n">02</div><div class="t">El mercado, depurado</div>Las cuotas de las casas (consenso/Pinnacle), limpiadas de su margen con el método de <b>Shin</b>: por lejos, la señal mejor calibrada para predecir fútbol.</div>
+      <div class="step"><div class="n">03</div><div class="t">Ensamble (Dixon-Coles)</div>Un modelo <b>Dixon-Coles</b> —el estándar académico para predecir marcadores— combina la fuerza del equipo con el mercado en una distribución de marcadores por partido.</div>
+      <div class="step"><div class="n">04</div><div class="t">Actualidad con IA</div>Un agente de IA monitorea la actualidad (lesiones, rotaciones, contexto) y ajusta el modelo cuando hay novedades relevantes.</div>
+      <div class="step"><div class="n">05</div><div class="t">Simulación Monte Carlo</div>Se juega el torneo completo miles de veces, con el formato y el bracket oficial 2026, y se cuentan los resultados.</div>
     </div>
+    <h3>Por qué confiar en los números</h3>
+    <p>La pieza clave es el <b>anclaje al mercado</b>: las casas de apuestas son, por lejos, la fuente mejor calibrada para estimar resultados de fútbol. Combinar nuestros modelos con esa señal —en vez de competir contra ella— es lo que hace que las probabilidades sean creíbles. Se recalcula cada pocas horas; por eso se mueven.</p>
     <h3>Formato 2026</h3>
     <p>48 selecciones, 12 grupos de 4. Avanzan los 2 primeros de cada grupo más los 8 mejores terceros (32) a Dieciseisavos, y de ahí a eliminación directa hasta la final.</p>
-    <h3>Qué significan los números</h3>
-    <p>Cada porcentaje es la fracción de simulaciones en que ocurre el evento (avanzar, llegar a una ronda, ser campeón). Se recalcula cada pocas horas a medida que llegan datos nuevos: por eso las probabilidades se mueven.</p>
     <h3>Honestidad</h3>
-    <p>Ningún modelo conoce el futuro. Esto es análisis estadístico con fines informativos y de entretenimiento, no una garantía de resultados. Las fuentes incluyen datos históricos de partidos y cuotas de mercado; el código y la bitácora de cambios son abiertos.</p>
+    <p>Ningún modelo conoce el futuro. Esto es análisis estadístico con fines informativos y de entretenimiento, no una garantía de resultados ni asesoría de apuestas. El código y la bitácora de cambios son abiertos.</p>
   </section>
 </main>
 <footer><div class="wrap">
