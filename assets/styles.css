@@ -104,7 +104,7 @@ td.team-c .fl{margin-right:8px}
 .bcol{display:flex; flex-direction:column; justify-content:space-around; gap:10px; min-width:128px}
 .bcol-h{color:var(--faint); font-size:11px; text-transform:uppercase; letter-spacing:.06em; text-align:center; font-weight:600}
 .bx{background:var(--surface); border:1px solid var(--line); border-radius:11px; overflow:hidden}
-.bx-t{padding:8px 10px; font-size:13px; display:flex; align-items:center; gap:8px; white-space:nowrap}
+.bx-t{padding:10px 11px; font-size:13px; display:flex; align-items:center; gap:8px; white-space:nowrap}
 .bx-t + .bx-t{border-top:1px solid var(--line)}
 .bx-t.win{font-weight:700; background:linear-gradient(90deg,rgba(16,211,158,.16),transparent)}
 .bx-t.lose{color:var(--faint)}
@@ -146,7 +146,7 @@ body.wide main.wrap{max-width:1340px}
 .bcol{position:relative; z-index:1; flex:1 1 0; min-width:150px; display:flex; flex-direction:column;
   justify-content:flex-start; gap:0}
 .bcol-body{flex:1 1 auto; display:flex; flex-direction:column; justify-content:space-around;
-  align-items:center; gap:12px}
+  align-items:center; gap:16px}
 .bcol-champ .bcol-body{justify-content:center}
 .bcol-h{position:sticky; top:60px; z-index:6; padding:10px 0; margin:0; text-align:center;
   background:var(--bg); box-shadow:0 8px 12px -8px var(--bg)}
@@ -164,10 +164,16 @@ body.wide main.wrap{max-width:1340px}
 .bx-t.lose .tt{color:var(--faint)}
 .bx-t .wp.won{background:linear-gradient(135deg,#10d39e,#34d0ff); color:#06120d; letter-spacing:.04em}
 /* Dieciseisavos lleva el origen de llave (1°C): mas ancho para que el % respire */
-.bcol:first-child{min-width:188px}
-.bcol:first-child .bx{width:188px}
-.bcol:first-child .bx-t{gap:7px; padding:8px 11px}
-.bcol:first-child .bx-t .tt{margin-right:4px}
+.bcol:first-child{min-width:212px}
+.bcol:first-child .bx{width:212px}
+.bcol:first-child .bx-t{gap:8px; padding:10px 13px}
+.bcol:first-child .bx-t .tt{margin-right:6px}
+.bx-t .wp{padding:2px 8px}
+/* tabla de probabilidades: columnas ordenables */
+th.srt{cursor:pointer; user-select:none; white-space:nowrap}
+th.srt:hover{color:var(--text)}
+th.srt.asc::after{content:" ▲"; font-size:9px; color:var(--cyan)}
+th.srt.desc::after{content:" ▼"; font-size:9px; color:var(--cyan)}
 
 /* heatmap tabla */
 .tbl.heat td{border-color:#0b1220}
@@ -246,8 +252,8 @@ body.wide main.wrap{max-width:1340px}
   .bcol-body{gap:26px}
   .bcol{min-width:158px}
   .bcol .bx{width:148px}
-  .bcol:first-child{min-width:178px}
-  .bcol:first-child .bx{width:178px}
+  .bcol:first-child{min-width:196px}
+  .bcol:first-child .bx{width:196px}
 
   /* gráfico de favoritos con más alto para que respiren las barras */
   .chart{height:520px}
