@@ -355,3 +355,18 @@ body.wide main.wrap{max-width:1340px}
 .lvclf{text-align:center; font-size:14px; color:var(--dim); margin-top:11px}
 .lvclf span{color:var(--faint); text-transform:uppercase; font-size:11px; letter-spacing:.05em; margin-right:4px}
 .lvclf b{color:var(--text); font-family:'Space Grotesk'}
+
+/* in-play: boton colapsar */
+.lv-collapse{margin-left:auto; background:#141d31; border:1px solid #2b3a5e; color:var(--dim); font-size:11px; font-weight:600;
+  padding:3px 10px; border-radius:999px; cursor:pointer; text-transform:none; letter-spacing:0; font-family:'Inter',sans-serif}
+.lv-collapse:hover{color:var(--text); border-color:#3a4d7a}
+.livebox.collapsed .lv-body{display:none}
+.livebox.collapsed{padding-bottom:14px}
+
+/* home: banner de partidos en vivo */
+.livebanner{text-align:center; margin:16px 0 -6px}
+.livebanner:empty{display:none; margin:0}
+.livebanner-in{display:inline-flex; align-items:center; gap:8px; flex-wrap:wrap; justify-content:center;
+  background:radial-gradient(400px 80px at 50% 0%,#2a1620,#0e1626 80%); border:1px solid #5e2b3a;
+  color:var(--text); padding:9px 16px; border-radius:999px; font-size:14px; font-weight:600}
+.livebanner-in b{color:#fff} .livebanner-in .lb-cta{color:#10d39e}

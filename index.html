@@ -30,6 +30,7 @@
 </div></nav>
 <main class="wrap">
 
+  <div id="livebanner" class="livebanner"></div>
   <section class="hero">
     <span class="eyebrow">⚽ Probabilidades en vivo</span>
     <h1>¿Quién gana el <span class="g">Mundial 2026</span>?</h1>
@@ -112,6 +113,34 @@
   el.textContent='actualizado hace '+o;
 })();
 </script>
-
+<script>
+/* Banner del home: si hay partido(s) del Mundial en juego, muestra un aviso con link al
+   calendario (mismo polleo ESPN, sin grafico). */
+(function(){
+  var NAME={"KOR": {"n": "Corea del Sur", "f": "🇰🇷"}, "MEX": {"n": "México", "f": "🇲🇽"}, "CZE": {"n": "República Checa", "f": "🇨🇿"}, "RSA": {"n": "Sudáfrica", "f": "🇿🇦"}, "BIH": {"n": "Bosnia-Herzegovina", "f": "🇧🇦"}, "CAN": {"n": "Canadá", "f": "🇨🇦"}, "QAT": {"n": "Catar", "f": "🇶🇦"}, "SUI": {"n": "Suiza", "f": "🇨🇭"}, "AUS": {"n": "Australia", "f": "🇦🇺"}, "USA": {"n": "Estados Unidos", "f": "🇺🇸"}, "PAR": {"n": "Paraguay", "f": "🇵🇾"}, "TUR": {"n": "Turquía", "f": "🇹🇷"}, "BRA": {"n": "Brasil", "f": "🇧🇷"}, "SCO": {"n": "Escocia", "f": "🏴󠁧󠁢󠁳󠁣󠁴󠁿"}, "HAI": {"n": "Haití", "f": "🇭🇹"}, "MAR": {"n": "Marruecos", "f": "🇲🇦"}, "GER": {"n": "Alemania", "f": "🇩🇪"}, "CIV": {"n": "Costa de Marfil", "f": "🇨🇮"}, "CUW": {"n": "Curazao", "f": "🇨🇼"}, "ECU": {"n": "Ecuador", "f": "🇪🇨"}, "JPN": {"n": "Japón", "f": "🇯🇵"}, "NED": {"n": "Países Bajos", "f": "🇳🇱"}, "SWE": {"n": "Suecia", "f": "🇸🇪"}, "TUN": {"n": "Túnez", "f": "🇹🇳"}, "KSA": {"n": "Arabia Saudita", "f": "🇸🇦"}, "CPV": {"n": "Cabo Verde", "f": "🇨🇻"}, "ESP": {"n": "España", "f": "🇪🇸"}, "URU": {"n": "Uruguay", "f": "🇺🇾"}, "BEL": {"n": "Bélgica", "f": "🇧🇪"}, "EGY": {"n": "Egipto", "f": "🇪🇬"}, "IRN": {"n": "Irán", "f": "🇮🇷"}, "NZL": {"n": "Nueva Zelanda", "f": "🇳🇿"}, "FRA": {"n": "Francia", "f": "🇫🇷"}, "IRQ": {"n": "Irak", "f": "🇮🇶"}, "NOR": {"n": "Noruega", "f": "🇳🇴"}, "SEN": {"n": "Senegal", "f": "🇸🇳"}, "ALG": {"n": "Argelia", "f": "🇩🇿"}, "ARG": {"n": "Argentina", "f": "🇦🇷"}, "AUT": {"n": "Austria", "f": "🇦🇹"}, "JOR": {"n": "Jordania", "f": "🇯🇴"}, "CRO": {"n": "Croacia", "f": "🇭🇷"}, "GHA": {"n": "Ghana", "f": "🇬🇭"}, "ENG": {"n": "Inglaterra", "f": "🏴󠁧󠁢󠁥󠁮󠁧󠁿"}, "PAN": {"n": "Panamá", "f": "🇵🇦"}, "COL": {"n": "Colombia", "f": "🇨🇴"}, "POR": {"n": "Portugal", "f": "🇵🇹"}, "COD": {"n": "RD Congo", "f": "🇨🇩"}, "UZB": {"n": "Uzbekistán", "f": "🇺🇿"}};
+  var SB='https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard';
+  function nm(ab){var n=NAME[ab]; return n?(n.f+' '+ab):ab;}
+  function show(t){var el=document.getElementById('livebanner'); if(el) el.innerHTML='<a href="calendario.html" class="livebanner-in">'+t+' <span class="lb-cta">Ver en vivo →</span></a>';}
+  if(/[?&]demo/.test(location.search)){ show('<span class="dotlive"></span> EN VIVO · '+nm('MEX')+' <b>2–0</b> '+nm('RSA')+" · 63' · +1 más"); return; }
+  function tick(){
+    fetch(SB).then(function(r){return r.json();}).then(function(d){
+      var live=[];
+      (d.events||[]).forEach(function(ev){
+        var c=(ev.competitions||[{}])[0], st=(c.status||{}).type||{};
+        if(st.state!=='in') return;
+        var sd={};(c.competitors||[]).forEach(function(x){sd[x.homeAway]={ab:(x.team||{}).abbreviation,score:parseInt(x.score)||0};});
+        if(sd.home&&sd.away) live.push({h:sd.home,a:sd.away,clock:(c.status||{}).displayClock});
+      });
+      var el=document.getElementById('livebanner'); if(!el) return;
+      if(!live.length){ el.innerHTML=''; setTimeout(tick,180000); return; }
+      var f=live[0], t='<span class="dotlive"></span> EN VIVO · '+nm(f.h.ab)+' <b>'+f.h.score+'–'+f.a.score+'</b> '+nm(f.a.ab)+(f.clock?' · '+f.clock:'');
+      if(live.length>1) t+=' · +'+(live.length-1)+' más';
+      el.innerHTML='<a href="calendario.html" class="livebanner-in">'+t+' <span class="lb-cta">Ver en vivo →</span></a>';
+      setTimeout(tick,60000);
+    }).catch(function(){ setTimeout(tick,180000); });
+  }
+  tick();
+})();
+</script>
 </body>
 </html>

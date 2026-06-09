@@ -55,13 +55,14 @@
 <script>
 var ELO={"GER": 1955, "KSA": 1640, "ALG": 1780, "ARG": 2095, "AUS": 1720, "AUT": 1790, "BIH": 1705, "BRA": 2020, "BEL": 1925, "CPV": 1640, "CAN": 1730, "QAT": 1680, "COL": 1915, "KOR": 1790, "CIV": 1800, "CRO": 1900, "CUW": 1530, "ECU": 1825, "EGY": 1725, "SCO": 1775, "ESP": 2120, "USA": 1790, "FRA": 2070, "GHA": 1700, "HAI": 1535, "ENG": 2015, "IRQ": 1600, "IRN": 1800, "JPN": 1880, "JOR": 1610, "MAR": 1860, "MEX": 1810, "NOR": 1810, "NZL": 1500, "PAN": 1695, "PAR": 1730, "NED": 2010, "POR": 2005, "COD": 1700, "CZE": 1760, "SEN": 1840, "RSA": 1665, "SWE": 1795, "SUI": 1855, "TUR": 1800, "TUN": 1690, "URU": 1895, "UZB": 1660}, CFG={"base": 1.3, "k": 0.0017, "hfa": 60, "rho": -0.13, "maxg": 10}, NAME={"GER": {"n": "Alemania", "f": "🇩🇪"}, "KSA": {"n": "Arabia Saudita", "f": "🇸🇦"}, "ALG": {"n": "Argelia", "f": "🇩🇿"}, "ARG": {"n": "Argentina", "f": "🇦🇷"}, "AUS": {"n": "Australia", "f": "🇦🇺"}, "AUT": {"n": "Austria", "f": "🇦🇹"}, "BIH": {"n": "Bosnia-Herzegovina", "f": "🇧🇦"}, "BRA": {"n": "Brasil", "f": "🇧🇷"}, "BEL": {"n": "Bélgica", "f": "🇧🇪"}, "CPV": {"n": "Cabo Verde", "f": "🇨🇻"}, "CAN": {"n": "Canadá", "f": "🇨🇦"}, "QAT": {"n": "Catar", "f": "🇶🇦"}, "COL": {"n": "Colombia", "f": "🇨🇴"}, "KOR": {"n": "Corea del Sur", "f": "🇰🇷"}, "CIV": {"n": "Costa de Marfil", "f": "🇨🇮"}, "CRO": {"n": "Croacia", "f": "🇭🇷"}, "CUW": {"n": "Curazao", "f": "🇨🇼"}, "ECU": {"n": "Ecuador", "f": "🇪🇨"}, "EGY": {"n": "Egipto", "f": "🇪🇬"}, "SCO": {"n": "Escocia", "f": "🏴󠁧󠁢󠁳󠁣󠁴󠁿"}, "ESP": {"n": "España", "f": "🇪🇸"}, "USA": {"n": "Estados Unidos", "f": "🇺🇸"}, "FRA": {"n": "Francia", "f": "🇫🇷"}, "GHA": {"n": "Ghana", "f": "🇬🇭"}, "HAI": {"n": "Haití", "f": "🇭🇹"}, "ENG": {"n": "Inglaterra", "f": "🏴󠁧󠁢󠁥󠁮󠁧󠁿"}, "IRQ": {"n": "Irak", "f": "🇮🇶"}, "IRN": {"n": "Irán", "f": "🇮🇷"}, "JPN": {"n": "Japón", "f": "🇯🇵"}, "JOR": {"n": "Jordania", "f": "🇯🇴"}, "MAR": {"n": "Marruecos", "f": "🇲🇦"}, "MEX": {"n": "México", "f": "🇲🇽"}, "NOR": {"n": "Noruega", "f": "🇳🇴"}, "NZL": {"n": "Nueva Zelanda", "f": "🇳🇿"}, "PAN": {"n": "Panamá", "f": "🇵🇦"}, "PAR": {"n": "Paraguay", "f": "🇵🇾"}, "NED": {"n": "Países Bajos", "f": "🇳🇱"}, "POR": {"n": "Portugal", "f": "🇵🇹"}, "COD": {"n": "RD Congo", "f": "🇨🇩"}, "CZE": {"n": "República Checa", "f": "🇨🇿"}, "SEN": {"n": "Senegal", "f": "🇸🇳"}, "RSA": {"n": "Sudáfrica", "f": "🇿🇦"}, "SWE": {"n": "Suecia", "f": "🇸🇪"}, "SUI": {"n": "Suiza", "f": "🇨🇭"}, "TUR": {"n": "Turquía", "f": "🇹🇷"}, "TUN": {"n": "Túnez", "f": "🇹🇳"}, "URU": {"n": "Uruguay", "f": "🇺🇾"}, "UZB": {"n": "Uzbekistán", "f": "🇺🇿"}}, KO_START="2026-06-28";
 
-/* IN-PLAY: marcador + 3 numeros 1X2 + clasificar (KO) + AREA APILADA 100% (eje category 0-90;
-   gana local arriba / empate medio / gana visita abajo; linea 'ahora'). ?demo=1. */
+/* IN-PLAY: marcador + 3 numeros 1X2 + clasificar (KO) + area apilada (eje category 0-90).
+   Eventos etiquetados (icono + codigo de seleccion) con detalle en tooltip. Boton para colapsar
+   cada partido. Multi-partido. ?demo=1. */
 (function(){
   var SB='https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard';
   var SUM='https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/summary?event=';
-  var C1='#34d0ff', C2='#fb923c', CD='#aeb8cc';   // local, visita, empate (paleta fija)
-  var echP=null;
+  var C1='#34d0ff', C2='#fb923c', CD='#aeb8cc';
+  var COLL={}, echP=null, wired=false;
   function ech(){ if(window.echarts) return Promise.resolve(); if(!echP){ echP=new Promise(function(r){ var s=document.createElement('script'); s.src='https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js'; s.onload=r; document.head.appendChild(s); }); } return echP; }
   function fact(n){var f=1;for(var i=2;i<=n;i++)f*=i;return f;}
   function pois(l,n){return Math.pow(l,n)*Math.exp(-l)/fact(n);}
@@ -78,9 +79,9 @@ var ELO={"GER": 1955, "KSA": 1640, "ALG": 1780, "ARG": 2095, "AUS": 1720, "AUT":
     var goals=[],reds=[],marks=[];
     (ke||[]).forEach(function(e){
       var tp=(((e.type||{}).text)||'').toLowerCase(), tm=(e.team||{}).abbreviation, mn=pmin((e.clock||{}).displayValue);
-      if(tp.indexOf('goal')>=0 && tp.indexOf('miss')<0 && tp.indexOf('disallow')<0 && tp.indexOf('no goal')<0){ goals.push({min:mn,team:tm}); marks.push({x:mn,t:'⚽',lab:'Gol de '+tname(tm)}); }
-      else if(tp.indexOf('red')>=0){ reds.push({min:mn,team:tm}); marks.push({x:mn,t:'🟥',lab:'Roja a '+tname(tm)}); }
-      else if(tp.indexOf('yellow')>=0){ marks.push({x:mn,t:'🟨',lab:'Amarilla a '+tname(tm)}); }
+      if(tp.indexOf('goal')>=0 && tp.indexOf('miss')<0 && tp.indexOf('disallow')<0 && tp.indexOf('no goal')<0){ goals.push({min:mn,team:tm}); marks.push({x:mn,t:'⚽',ab:tm,lab:'Gol de '+tname(tm)}); }
+      else if(tp.indexOf('red')>=0){ reds.push({min:mn,team:tm}); marks.push({x:mn,t:'🟥',ab:tm,lab:'Roja a '+tname(tm)}); }
+      else if(tp.indexOf('yellow')>=0){ marks.push({x:mn,t:'🟨',ab:tm,lab:'Amarilla a '+tname(tm)}); }
     });
     return {goals:goals,reds:reds,marks:marks};
   }
@@ -99,9 +100,10 @@ var ELO={"GER": 1955, "KSA": 1640, "ALG": 1780, "ARG": 2095, "AUS": 1720, "AUT":
   function cardHTML(m){
     var H=NAME[m.h.ab]||{n:m.h.ab,f:''}, A=NAME[m.a.ab]||{n:m.a.ab,f:''};
     var chart=(ELO[m.h.ab]!=null&&ELO[m.a.ab]!=null&&m.ev)?'<div class="lv-chart" id="ch-'+m.id+'"></div>':'';
-    return '<div class="livebox"><div class="lv-tag"><span class="dotlive"></span> EN VIVO · '+(m.clock||'')+'</div>'+
+    return '<div class="livebox" data-box="'+m.id+'"><div class="lv-tag"><span class="dotlive"></span> EN VIVO · '+(m.clock||'')+
+      '<button class="lv-collapse" data-id="'+m.id+'" aria-label="Colapsar partido"></button></div>'+
       '<div class="lv-main"><span class="lv-t">'+H.f+' '+H.n+'</span><span class="lv-sc">'+m.h.score+' – '+m.a.score+'</span><span class="lv-t">'+A.n+' '+A.f+'</span></div>'+
-      barHTML(m)+chart+'</div>';
+      '<div class="lv-body">'+barHTML(m)+chart+'</div></div>';
   }
   function drawChart(m){
     var el=document.getElementById('ch-'+m.id); if(!el||!m.ev) return;
@@ -115,8 +117,8 @@ var ELO={"GER": 1955, "KSA": 1640, "ALG": 1780, "ARG": 2095, "AUS": 1720, "AUT":
       } else { H.push(null); D.push(null); A2.push(null); }
     }
     var Hn=NAME[m.h.ab]||{n:m.h.ab}, An=NAME[m.a.ab]||{n:m.a.ab};
-    var EV={}; m.ev.marks.forEach(function(e){ EV[e.x]=(EV[e.x]?EV[e.x]+' \u00b7 ':'')+e.t+' '+(e.lab||''); });
-    var mldata=m.ev.marks.map(function(e){return {xAxis:e.x, lineStyle:{color:'#e8edf9',type:'dashed',opacity:.45,width:1.1}, label:{formatter:e.t, rotate:0, position:'insideEndTop', distance:3, fontSize:13, color:'#eaf0ff'}};});
+    var EV={}; m.ev.marks.forEach(function(e){ EV[e.x]=(EV[e.x]?EV[e.x]+' · ':'')+e.t+' '+(e.lab||''); });
+    var mldata=m.ev.marks.map(function(e){return {xAxis:e.x, lineStyle:{color:'#e8edf9',type:'dashed',opacity:.45,width:1.1}, label:{formatter:e.t+(e.ab?' '+e.ab:''), rotate:0, position:'insideEndTop', distance:3, fontSize:12, fontWeight:700, color:'#eaf0ff'}};});
     mldata.push({xAxis:maxM, lineStyle:{color:'#ffffff',opacity:.85,width:1.6}, label:{formatter:'ahora', rotate:0, position:'insideEndTop', distance:3, fontSize:10, color:'#ffffff'}});
     function band(nm,dt,col,ml){var o={name:nm,type:'line',stack:'p',data:dt,symbol:'none',itemStyle:{color:col},lineStyle:{color:col,width:1.2},areaStyle:{color:col,opacity:0.88}}; if(ml)o.markLine={symbol:'none',silent:true,data:mldata}; return o;}
     var ser=[ band('Gana '+An.n,A2,C2,true), band('Empate',D,CD), band('Gana '+Hn.n,H,C1) ];
@@ -124,10 +126,21 @@ var ELO={"GER": 1955, "KSA": 1640, "ALG": 1780, "ARG": 2095, "AUS": 1720, "AUT":
     ch.setOption({grid:{left:34,right:14,top:40,bottom:24},
       legend:{data:['Gana '+Hn.n,'Empate','Gana '+An.n],top:8,right:10,itemWidth:14,itemHeight:8,textStyle:{color:'#9aa7cc',fontSize:11},icon:'roundRect'},
       tooltip:{trigger:'axis',backgroundColor:'#0e1626',borderColor:'#26304d',textStyle:{color:'#eaf0ff',fontSize:12},
-        formatter:function(ps){var mm=ps[0].axisValue;var s="<b>Minuto "+mm+"'</b>";ps.slice().reverse().forEach(function(p){if(p.value==null)return;s+='<br>'+p.marker+p.seriesName+': <b>'+Math.round(p.value)+'%</b>';});if(EV[mm])s+='<br><span style="color:#9aa7cc">'+EV[mm]+'</span>';return s;}},
+        formatter:function(ps){var mm=ps[0].axisValue;var s="<b>Minuto "+mm+"'</b>";ps.slice().reverse().forEach(function(p){if(p.value==null)return;s+='<br>'+p.marker+p.seriesName+': <b>'+Math.round(p.value)+'%</b>';});if(EV[mm])s+='<br><span style="color:#cdd6f4">'+EV[mm]+'</span>';return s;}},
       xAxis:{type:'category',data:xs,boundaryGap:false,axisLabel:{color:'#6b7798',interval:function(i,v){v=+v;return v===0||v===45||v===90||v===120;},formatter:function(v){v=+v;return v===0?'0':(v===45?'Mitad':v+"'");}},axisLine:{lineStyle:{color:'#26304d'}},axisTick:{show:false}},
       yAxis:{type:'value',min:0,max:100,interval:50,axisLabel:{color:'#6b7798'},axisLine:{show:false},splitLine:{lineStyle:{color:'#16203a'}}},
       series:ser},true);
+  }
+  function applyCollapse(){
+    document.querySelectorAll('#livewrap .livebox').forEach(function(b){
+      var id=b.getAttribute('data-box'), btn=b.querySelector('.lv-collapse');
+      if(COLL[id]){ b.classList.add('collapsed'); if(btn)btn.textContent='ver ▾'; }
+      else { b.classList.remove('collapsed'); if(btn)btn.textContent='ocultar ▴'; }
+    });
+  }
+  function wire(){
+    if(wired) return; var w=document.getElementById('livewrap'); if(!w) return; wired=true;
+    w.addEventListener('click',function(e){ var btn=e.target.closest('.lv-collapse'); if(!btn) return; var id=btn.getAttribute('data-id'); COLL[id]=!COLL[id]; applyCollapse(); });
   }
   var timer=null;
   function sched(ms){clearTimeout(timer);timer=setTimeout(poll,ms);}
@@ -136,15 +149,16 @@ var ELO={"GER": 1955, "KSA": 1640, "ALG": 1780, "ARG": 2095, "AUS": 1720, "AUT":
     var w=document.getElementById('livewrap'); if(!w) return;
     disposeCharts();
     w.innerHTML='<div class="livehead">'+head+'</div>'+live.map(cardHTML).join('');
-    ech().then(function(){ live.forEach(drawChart); }).catch(function(){});
+    wire(); applyCollapse();
+    ech().then(function(){ live.forEach(function(m){ if(!COLL[m.id]) drawChart(m); }); }).catch(function(){});
   }
   function demo(){
     var k={id:'demoK',h:{ab:'ARG',score:1},a:{ab:'BRA',score:1},min:80,clock:"80'",ko:true,
       ev:{goals:[{min:22,team:'ARG'},{min:35,team:'BRA'}],reds:[{min:65,team:'ARG'}],
-      marks:[{x:22,t:'⚽',lab:'Gol de Argentina (1-0)'},{x:35,t:'⚽',lab:'Gol de Brasil (1-1)'},{x:52,t:'🟨',lab:'Amarilla a Brasil'},{x:65,t:'🟥',lab:'Roja a Argentina'}]}};
+      marks:[{x:22,t:'⚽',ab:'ARG',lab:'Gol de Argentina (1-0)'},{x:35,t:'⚽',ab:'BRA',lab:'Gol de Brasil (1-1)'},{x:52,t:'🟨',ab:'BRA',lab:'Amarilla a Brasil'},{x:65,t:'🟥',ab:'ARG',lab:'Roja a Argentina'}]}};
     var g={id:'demoG',h:{ab:'MEX',score:2},a:{ab:'RSA',score:0},min:63,clock:"63'",ko:false,
       ev:{goals:[{min:12,team:'MEX'},{min:55,team:'MEX'}],reds:[],
-      marks:[{x:12,t:'⚽',lab:'Gol de México (1-0)'},{x:48,t:'🟨',lab:'Amarilla a Sudáfrica'},{x:55,t:'⚽',lab:'Gol de México (2-0)'}]}};
+      marks:[{x:12,t:'⚽',ab:'MEX',lab:'Gol de México (1-0)'},{x:48,t:'🟨',ab:'RSA',lab:'Amarilla a Sudáfrica'},{x:55,t:'⚽',ab:'MEX',lab:'Gol de México (2-0)'}]}};
     renderAll([k,g], 'Demo · 2 partidos de ejemplo en simultáneo (no son reales)');
   }
   function poll(){
