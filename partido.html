@@ -95,7 +95,11 @@ function render(){
 }
 ['home','away','host'].forEach(function(id){document.getElementById(id).addEventListener('change',render);});
 document.getElementById('swap').addEventListener('click',function(){var h=document.getElementById('home'),a=document.getElementById('away');var t=h.value;h.value=a.value;a.value=t;render();});
-(function(){var keys=TEAMS.map(function(x){return x.k;});document.getElementById('home').value=keys.indexOf('espana')>=0?'espana':keys[0];document.getElementById('away').value=keys.indexOf('brasil')>=0?'brasil':keys[1];})();
+(function(){var keys=TEAMS.map(function(x){return x.k;});
+  function byTri(c){for(var i=0;i<TEAMS.length;i++)if(TEAMS[i].t===c)return TEAMS[i].k;return null;}
+  var qp=new URLSearchParams(location.search), qh=byTri((qp.get('h')||'').toUpperCase()), qa=byTri((qp.get('a')||'').toUpperCase());
+  document.getElementById('home').value=qh||(keys.indexOf('espana')>=0?'espana':keys[0]);
+  document.getElementById('away').value=qa||(keys.indexOf('brasil')>=0?'brasil':keys[1]);})();
 window.addEventListener('resize',function(){heat.resize();});
 render();
 </script>

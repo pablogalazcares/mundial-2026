@@ -59,7 +59,8 @@ a{color:var(--cyan); text-decoration:none}
 section.block{padding:30px 0}
 .shead{display:flex; align-items:end; justify-content:space-between; gap:12px; margin-bottom:6px; flex-wrap:wrap}
 .shead h2{font-size:clamp(20px,3vw,28px); margin:0}
-.shead .kq{color:var(--dim); font-size:14px}
+.shead .kq{color:var(--dim); font-size:12px; background:var(--surface); border:1px solid var(--line);
+  padding:4px 12px; border-radius:999px; white-space:nowrap; font-weight:500}
 .lead{color:var(--dim); margin:2px 0 18px; max-width:70ch}
 
 /* card / chart */
@@ -370,3 +371,18 @@ body.wide main.wrap{max-width:1340px}
   background:radial-gradient(400px 80px at 50% 0%,#2a1620,#0e1626 80%); border:1px solid #5e2b3a;
   color:var(--text); padding:9px 16px; border-radius:999px; font-size:14px; font-weight:600}
 .livebanner-in b{color:#fff} .livebanner-in .lb-cta{color:#10d39e}
+
+/* calendario: link a "partido a partido" + lista de siguientes */
+.nx-link{display:inline-block; margin-top:12px; color:var(--cyan); font-size:13px; font-weight:600}
+.nx-link:hover{text-decoration:underline}
+.upnext{max-width:520px; margin:14px auto 0}
+.upnext-h{color:var(--faint); font-size:11px; text-transform:uppercase; letter-spacing:.05em; font-weight:600; margin:0 2px 6px}
+.upr{display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:10px; padding:9px 12px;
+  border-radius:10px; color:var(--dim); border:1px solid transparent}
+.upr:nth-of-type(odd){background:#0c1320}
+.upr:hover{border-color:#2b3a5e; color:var(--text)}
+.upr-t{color:var(--faint); font-size:12.5px; white-space:nowrap}
+.upr-m{font-size:14px; text-align:center} .upr-m .fl{font-size:16px}
+.upr-vs{color:var(--faint); font-size:11px; margin:0 3px}
+.upr-f{color:var(--faint); font-size:11.5px; white-space:nowrap}
+@media (max-width:560px){ .upr-t{font-size:11px} .upr-f{display:none} }
