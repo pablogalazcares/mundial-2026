@@ -401,8 +401,12 @@ body.wide main.wrap{max-width:1340px}
 .mp-r .mp-bar{display:block; height:8px; border-radius:5px; background:#1d2742; overflow:hidden}
 .mp-r .mp-bar i{display:block; height:100%}
 .mp-r b{font-family:'Space Grotesk'; font-weight:700; color:var(--text); width:38px; text-align:right}
-.mp-sct{color:var(--faint); font-size:11px; text-transform:uppercase; letter-spacing:.05em; font-weight:600; margin-bottom:7px}
-.mp-scs{display:flex; flex-wrap:wrap; gap:7px}
-.mp-sc{background:#121a2e; border:1px solid #26304d; border-radius:8px; padding:5px 9px; font-size:12.5px; color:var(--dim)}
-.mp-sc b{color:var(--text); font-weight:600}
+.mp-sct{color:var(--faint); font-size:11px; text-transform:uppercase; letter-spacing:.05em; font-weight:600; margin-bottom:8px}
+.mp-scs{display:grid; gap:8px}
+.mp-sl{display:grid; grid-template-columns:140px 1fr auto; align-items:center; gap:10px}
+.mp-slt b{font-family:'Space Grotesk'; font-weight:600; color:var(--text); font-size:13px}
+.mp-slb{height:8px; border-radius:5px; background:#1d2742; overflow:hidden}
+.mp-slb i{display:block; height:100%; background:linear-gradient(90deg,#3a7bd5,#34d0ff); border-radius:5px}
+.mp-slp{font-family:'Space Grotesk'; font-weight:700; color:var(--text); font-size:13px; width:34px; text-align:right}
+@media (max-width:560px){ .mp-sl{grid-template-columns:108px 1fr auto} .mp-slt b{font-size:12px} }
 .mp-link{display:inline-block; margin-top:12px; color:var(--cyan); font-size:13px; font-weight:600}
