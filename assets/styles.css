@@ -325,3 +325,21 @@ body.wide main.wrap{max-width:1340px}
   .mfase{display:none}
   .mteam .fl{font-size:16px}
 }
+
+/* ---- In-play (EN VIVO) ---- */
+.livehead{font-family:'Space Grotesk'; font-weight:700; font-size:14px; color:#ff5d5d; text-transform:uppercase;
+  letter-spacing:.05em; margin:4px 0 10px}
+.livebox{background:radial-gradient(600px 200px at 50% -40%,#2a1620,#0e1626 70%); border:1px solid #5e2b3a;
+  border-radius:18px; padding:16px 18px; margin:0 0 14px}
+.lv-tag{color:#ff5d5d; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; display:flex; align-items:center; gap:7px}
+.dotlive{width:9px; height:9px; border-radius:50%; background:#ff5d5d; box-shadow:0 0 0 0 rgba(255,93,93,.6); animation:lpulse 1.6s infinite}
+@keyframes lpulse{0%{box-shadow:0 0 0 0 rgba(255,93,93,.5)}70%{box-shadow:0 0 0 8px rgba(255,93,93,0)}100%{box-shadow:0 0 0 0 rgba(255,93,93,0)}}
+.lv-main{display:flex; align-items:center; justify-content:center; gap:16px; flex-wrap:wrap; margin:8px 0 4px}
+.lv-t{font-family:'Space Grotesk'; font-weight:700; font-size:clamp(16px,2.6vw,21px)}
+.lv-sc{font-family:'Space Grotesk'; font-weight:700; font-size:clamp(26px,5vw,38px); color:#fff; min-width:96px; text-align:center}
+.lprob{margin-top:10px; display:grid; gap:7px; max-width:420px; margin-left:auto; margin-right:auto}
+.lpr{display:grid; grid-template-columns:120px 1fr auto; align-items:center; gap:8px; font-size:13px; color:var(--dim)}
+.lpbar{height:8px; border-radius:6px; background:#1d2742; overflow:hidden}
+.lpbar > i{display:block; height:100%; border-radius:6px}
+.lpbar.h > i{background:var(--grad)} .lpbar.d > i{background:#46527a} .lpbar.a > i{background:linear-gradient(90deg,#3a7bd5,#34d0ff)}
+.lpp{font-family:'Space Grotesk'; font-weight:700; font-size:13px; width:38px; text-align:right; color:var(--text)}
