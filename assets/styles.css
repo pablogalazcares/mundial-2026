@@ -23,11 +23,11 @@ a{color:var(--cyan); text-decoration:none}
 /* nav */
 .nav{position:sticky; top:0; z-index:20; backdrop-filter:saturate(160%) blur(12px);
   background:color-mix(in srgb,var(--bg) 78%,transparent); border-bottom:1px solid var(--line)}
-.nav .wrap{display:flex; align-items:center; gap:14px; min-height:60px; row-gap:4px; flex-wrap:wrap}
+.nav .wrap{display:flex; align-items:center; gap:10px; min-height:60px; row-gap:4px; flex-wrap:wrap}
 .brand{display:flex; align-items:center; gap:10px; font-family:'Space Grotesk'; font-weight:700; font-size:17px; flex:0 0 auto}
 .brand .dot{width:24px; height:24px; border-radius:7px; background:var(--grad); box-shadow:0 0 18px rgba(16,211,158,.5)}
 .nav .links{display:flex; gap:2px; margin-left:auto; flex-wrap:wrap; justify-content:flex-end}
-.nav .links a{color:var(--dim); font-weight:600; font-size:13.5px; padding:8px 10px; border-radius:9px; white-space:nowrap}
+.nav .links a{color:var(--dim); font-weight:600; font-size:13px; padding:7px 9px; border-radius:9px; white-space:nowrap}
 .nav .links a:hover{color:var(--text); background:var(--surface)}
 .nav .links a.active{color:#06231b; background:var(--emerald)}
 
@@ -136,7 +136,7 @@ footer a{color:var(--dim)}
 /* ===== mejoras P3 v2 ===== */
 /* bracket con conectores + slots + winprob */
 /* la pagina de camino usa mas ancho (sin transform, para que el sticky de las rondas funcione) */
-body.wide .wrap{max-width:1340px}
+body.wide main.wrap{max-width:1340px}
 .bracket-wrap{position:relative}
 .bracket{position:relative; gap:0; align-items:stretch; overflow-x:visible}
 .bk-lines{position:absolute; top:0; left:0; pointer-events:none; z-index:0}
