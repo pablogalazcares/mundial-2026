@@ -209,12 +209,6 @@ th.srt.desc::after{content:" ▼"; font-size:9px; color:var(--cyan)}
 .nav .cta{margin-left:8px; background:var(--grad); color:#06231b; font-weight:700; font-size:14px;
   padding:8px 14px; border-radius:10px; white-space:nowrap; box-shadow:0 0 18px rgba(16,211,158,.35)}
 .nav .cta:hover{filter:brightness(1.05)}
-/* botones dentro de .links: se alinean a la derecha y envuelven ordenado con los enlaces */
-.nav .links a.cta-sim,.nav .links a.cta{font-size:13px; font-weight:700; padding:7px 12px; border-radius:10px; white-space:nowrap; margin-left:6px}
-.nav .links a.cta-sim{background:linear-gradient(135deg,#8b5cf6,#ec4899); color:#fff; box-shadow:0 0 16px rgba(168,85,247,.4)}
-.nav .links a.cta-sim:hover{filter:brightness(1.07); background:linear-gradient(135deg,#8b5cf6,#ec4899); color:#fff}
-.nav .links a.cta{background:var(--grad); color:#06231b; box-shadow:0 0 16px rgba(16,211,158,.3)}
-.nav .links a.cta:hover{filter:brightness(1.05); color:#06231b}
 
 .subscribe{display:grid; grid-template-columns:1.05fr .95fr; gap:22px; background:linear-gradient(135deg,var(--surface2),var(--surface));
   border:1px solid var(--line2); border-radius:22px; padding:26px; align-items:center;
