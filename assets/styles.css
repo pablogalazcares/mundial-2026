@@ -170,6 +170,12 @@ body.wide main.wrap{max-width:1340px}
 /* en celular: scroll horizontal del cuadro (el sticky se vuelve inerte, aceptable) */
 @media (max-width:760px){ .bracket{overflow-x:auto} }
 .bx-t{position:relative}
+/* bracket interactivo: realce de la seleccion + lineas que se pintan/engrosan al hover */
+#bklines path{transition:stroke .16s ease, stroke-width .16s ease}
+.bx-t{transition:background .14s ease}
+.bx-t.bx-hi{background:color-mix(in srgb,var(--gc,#9aa3b4) 18%,transparent)}
+.bx-t.bx-hi .tt{color:#fff}
+
 .bx-t .slot{font-family:'Space Grotesk'; font-weight:600; font-size:9.5px; color:var(--faint);
   background:#0d1424; border:1px solid var(--line); border-radius:5px; padding:1px 3px; min-width:22px; text-align:center; flex:none}
 .bx-t .fl{font-size:16px; flex:none}

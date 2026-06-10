@@ -34,6 +34,8 @@ h1{font-family:'Anton','Space Grotesk',sans-serif;font-weight:400;text-transform
 /* selector de grupos */
 .gsel{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
 .gsel button{width:34px;height:34px;border-radius:9px;border:1px solid var(--line);background:var(--panel2);color:var(--mut);font-weight:700;cursor:pointer}
+/* en pantalla angosta: 12 grupos en grilla 6x2 (mitad y mitad). Va DESPUES de la base para ganar el cascade */
+@media(max-width:560px){.gsel{display:grid;grid-template-columns:repeat(6,1fr)}.gsel button{width:auto}}
 .gsel button.on{border-color:var(--acc);color:var(--acc);background:#13241c}
 .gsel button.has{color:var(--txt)}
 .gsel button .pin{display:block;font-size:8px;line-height:1;margin-top:1px;color:var(--acc)}
@@ -81,22 +83,31 @@ td{border-bottom:1px solid var(--line)}
 .muted{color:var(--mut)}
 /* fondo atmosferico igual al resto del sitio: aurora WebGL (sedes + glow dorado) + balon + glow estatico */
 .fx-aurora{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;display:block}
-body::before{content:"";position:fixed;inset:-12% -12% auto -12%;height:78vh;z-index:-1;pointer-events:none;
+body::before{content:"";position:fixed;top:-12%;left:0;right:0;bottom:auto;height:78vh;z-index:-1;pointer-events:none;
   background:radial-gradient(60% 60% at 18% 30%,rgba(24,52,120,.22),transparent 70%),
   radial-gradient(55% 55% at 85% 22%,rgba(190,52,58,.18),transparent 70%),
   radial-gradient(50% 50% at 50% 0%,rgba(243,177,58,.10),transparent 70%);filter:blur(8px)}
 body.aurora-on::before{display:none}
-body::after{content:"";position:fixed;right:-70px;bottom:-70px;width:360px;height:360px;z-index:-1;pointer-events:none;opacity:.05;
+body::after{content:"";position:fixed;right:0;bottom:-60px;width:340px;height:340px;z-index:-1;pointer-events:none;opacity:.05;
   background:no-repeat center/contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cg fill='none' stroke='%23f3b13a' stroke-width='3'%3E%3Ccircle cx='100' cy='100' r='92'/%3E%3Cline x1='100' y1='62' x2='100' y2='12'/%3E%3Cline x1='130' y1='84' x2='176' y2='66'/%3E%3Cline x1='119' y1='120' x2='150' y2='168'/%3E%3Cline x1='81' y1='120' x2='50' y2='168'/%3E%3Cline x1='70' y1='84' x2='24' y2='66'/%3E%3C/g%3E%3Cpolygon points='100,62 130,84 119,120 81,120 70,84' fill='%23f3b13a'/%3E%3C/svg%3E")}
-@media(max-width:760px){body::after{width:230px;height:230px;right:-50px;bottom:-50px;opacity:.04}}
+@media(max-width:760px){
+  body::after{width:190px;height:190px;right:0;bottom:-30px;opacity:.04}
+  /* nav como el resto del sitio: marca arriba, links en fila con scroll horizontal */
+  .snav .in{flex-wrap:wrap;gap:8px;min-height:auto;padding:9px 14px;row-gap:8px}
+  .snav .brand{font-size:15px}
+  .snav .lnk{order:3;width:100%;margin-left:0;flex-wrap:nowrap;justify-content:flex-start;
+    overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:4px}
+  .snav .lnk::-webkit-scrollbar{display:none}
+  .snav .lnk a{flex:0 0 auto;padding:6px 9px}
+}
 </style>
-<script src="assets/aurora.js?v=1781111993" defer></script>
+<script src="assets/aurora.js?v=1781115947" defer></script>
 </head>
 <body>
 <nav class="snav"><div class="in">
   <a class="brand" href="index.html"><span class="dot"></span> Pronóstico Mundial 2026</a>
   <div class="lnk">
-    <a href="index.html">Inicio</a><a href="calendario.html">Calendario</a><a href="grupos.html">Grupos</a><a href="camino.html">Eliminatoria</a><a href="probabilidades.html">Probabilidades</a><a href="partido.html">Partidos</a><a href="metodologia.html">Metodología</a><a class="sim" href="demo_simulador.html">🎮 Simulador</a><a class="subcta" href="index.html#suscribete">Suscríbete</a>
+    <a href="index.html">Inicio</a><a href="calendario.html">Calendario</a><a href="grupos.html">Grupos</a><a href="camino.html">Eliminatoria</a><a href="probabilidades.html">Probabilidades</a><a href="partido.html">Partidos</a><a href="metodologia.html">Metodología</a><a class="sim" href="simulador.html">🎮 Simulador</a><a class="subcta" href="index.html#suscribete">Suscríbete</a>
   </div>
 </div></nav>
 <div class="wrap">
