@@ -20,11 +20,11 @@
 <meta name="twitter:description" content="The real 2026 World Cup odds: champion and advancement for every team, with thousands of tournament simulations. Updated every 4 hours.">
 <meta name="twitter:image" content="https://pablogalazcares.github.io/mundial-2026/assets/og.png">
 <link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../assets/styles.css?v=1781121224">
+<link rel="stylesheet" href="../assets/styles.css?v=1781127206">
 
-<script src="../assets/lenis.min.js?v=1781121224" defer></script>
-<script src="../assets/motion.js?v=1781121224" defer></script>
-<script src="../assets/aurora.js?v=1781121224" defer></script>
+<script src="../assets/lenis.min.js?v=1781127206" defer></script>
+<script src="../assets/motion.js?v=1781127206" defer></script>
+<script src="../assets/aurora.js?v=1781127206" defer></script>
 </head>
 <body>
 <div class="fx-grain" aria-hidden="true"></div>
@@ -55,7 +55,7 @@
       <a class="feat feat-lg" href="probabilidades.html">
         <div class="feat-h"><span class="feat-ic">📊</span><h3>Odds by round</h3></div>
         <p>From groups to the final: each team's odds, sortable by column.</p>
-        <div class="feat-prev fp-list"><div class="fp-row"><span class="fl">🇪🇸</span><span class="fp-n">ESP</span><span class="fp-track"><i style="width:100%"></i></span><b>17.2%</b></div><div class="fp-row"><span class="fl">🇦🇷</span><span class="fp-n">ARG</span><span class="fp-track"><i style="width:83%"></i></span><b>14.2%</b></div><div class="fp-row"><span class="fl">🇫🇷</span><span class="fp-n">FRA</span><span class="fp-track"><i style="width:70%"></i></span><b>12.1%</b></div><div class="fp-row"><span class="fl">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span><span class="fp-n">ENG</span><span class="fp-track"><i style="width:45%"></i></span><b>7.6%</b></div></div>
+        <div class="feat-prev fp-list"><div class="fp-row"><span class="fl">🇪🇸</span><span class="fp-n">ESP</span><span class="fp-track"><i style="width:100%"></i></span><b>17.2%</b></div><div class="fp-row"><span class="fl">🇦🇷</span><span class="fp-n">ARG</span><span class="fp-track"><i style="width:83%"></i></span><b>14.2%</b></div><div class="fp-row"><span class="fl">🇫🇷</span><span class="fp-n">FRA</span><span class="fp-track"><i style="width:70%"></i></span><b>12.1%</b></div><div class="fp-row"><span class="fl">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span><span class="fp-n">ENG</span><span class="fp-track"><i style="width:45%"></i></span><b>7.7%</b></div></div>
         <span class="feat-go">See table →</span>
       </a>
       <a class="feat" href="calendario.html">
@@ -126,10 +126,14 @@
 </main>
 <footer><div class="wrap">
   <span>The real 2026 World Cup odds · 10,000 simulations per update · every 4 h.</span>
-  <span><a href="metodologia.html">Methodology</a> · <a href="https://github.com/pablogalazcares" rel="noopener">code</a></span>
+  <span><a href="metodologia.html">Methodology</a> · <a href="https://github.com/pablogalazcares" rel="noopener">code</a> · <a class="jsmail" data-u="pablo.galaz.c" data-d="ug.uchile.cl" href="#">Contact</a></span>
 </div></footer>
 <script>
 (function(){
+  // arma el mailto en runtime (correo partido en data-attrs para que los bots no lo scrapeen)
+  document.querySelectorAll('a.jsmail').forEach(function(a){
+    a.href='mailto:'+a.getAttribute('data-u')+'@'+a.getAttribute('data-d');
+  });
   var el=document.querySelector('[data-updated]'); if(!el) return;
   var t=Date.parse(el.getAttribute('data-updated')); if(isNaN(t)) return;
   var s=Math.max(0,(Date.now()-t)/1000), o;
