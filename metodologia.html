@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es" data-pal="mundial">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#08090c">
+<title>Metodología · Spherics</title>
+<meta name="description" content="Un ensamble de modelos estadísticos (Elo, Dixon-Coles), el mercado de apuestas (de-vig de Shin) y ajustes por IA, simulando el Mundial 2026 miles de veces.">
+<link rel="canonical" href="https://pablogalazcares.github.io/mundial-2026/metodologia.html">
+<link rel="alternate" hreflang="es" href="https://pablogalazcares.github.io/mundial-2026/metodologia.html"><link rel="alternate" hreflang="en" href="https://pablogalazcares.github.io/mundial-2026/en/metodologia.html"><link rel="alternate" hreflang="fr" href="https://pablogalazcares.github.io/mundial-2026/fr/metodologia.html"><link rel="alternate" hreflang="pt" href="https://pablogalazcares.github.io/mundial-2026/pt/metodologia.html"><link rel="alternate" hreflang="x-default" href="https://pablogalazcares.github.io/mundial-2026/metodologia.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Metodología · Spherics">
+<meta property="og:description" content="Un ensamble de modelos estadísticos (Elo, Dixon-Coles), el mercado de apuestas (de-vig de Shin) y ajustes por IA, simulando el Mundial 2026 miles de veces.">
+<meta property="og:image" content="https://pablogalazcares.github.io/mundial-2026/assets/og.png">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:url" content="https://pablogalazcares.github.io/mundial-2026/metodologia.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Metodología · Spherics">
+<meta name="twitter:description" content="Un ensamble de modelos estadísticos (Elo, Dixon-Coles), el mercado de apuestas (de-vig de Shin) y ajustes por IA, simulando el Mundial 2026 miles de veces.">
+<meta name="twitter:image" content="https://pablogalazcares.github.io/mundial-2026/assets/og.png">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/styles.css?v=1781149039">
+
+<script src="assets/lenis.min.js?v=1781149039" defer></script>
+<script src="assets/motion.js?v=1781149039" defer></script>
+<script src="assets/aurora.js?v=1781149039" defer></script>
+</head>
+<body>
+<div class="fx-grain" aria-hidden="true"></div>
+<nav class="nav"><div class="wrap">
+  <a class="brand" href="index.html"><span class="dot"></span> Spherics</a>
+  <div class="links"><a href="index.html">Inicio</a><a href="calendario.html">Calendario</a><a href="grupos.html">Grupos</a><a href="camino.html">Eliminatoria</a><a href="probabilidades.html">Probabilidades</a><a href="partido.html">Partidos</a><a href="metodologia.html" class="active">Metodología</a><a class="cta-sim" href="simulador.html">🎮 Simulador</a><a class="cta" href="index.html#suscribete">Suscríbete</a></div>
+  <div class="langsw" role="group" aria-label="idioma"><a class="on" aria-current="true">ES</a><a href="en/metodologia.html">EN</a><a href="fr/metodologia.html">FR</a><a href="pt/metodologia.html">PT</a></div>
+</div></nav>
+<main class="wrap">
+
+  <section class="block prose">
+    <div class="shead"><h2>Metodología</h2></div>
+    <p class="lead">No es adivinanza. Es un <b>ensamble</b> que combina modelos estadísticos y de aprendizaje con el mercado de apuestas y la actualidad —esto último vía IA—, y simula el Mundial completo miles de veces para estimar las probabilidades de cada selección.</p>
+    <div class="steps">
+      <div class="step"><div class="n">01</div><div class="t">Fuerza de cada selección</div>Un rating tipo Elo que aprende del historial de partidos —oficiales y amistosos— y mide el nivel real de cada equipo.</div>
+      <div class="step"><div class="n">02</div><div class="t">El mercado, depurado</div>Las cuotas de las casas (consenso/Pinnacle), limpiadas de su margen con el método de <b>Shin</b>: por lejos, la señal mejor calibrada para predecir fútbol.</div>
+      <div class="step"><div class="n">03</div><div class="t">Ensamble (Dixon-Coles)</div>Un modelo <b>Dixon-Coles</b> —el estándar académico para predecir marcadores— combina la fuerza del equipo con el mercado en una distribución de marcadores por partido.</div>
+      <div class="step"><div class="n">04</div><div class="t">Actualidad con IA</div>Un agente de IA monitorea la actualidad (lesiones, rotaciones, contexto) y ajusta el modelo cuando hay novedades relevantes.</div>
+      <div class="step"><div class="n">05</div><div class="t">Simulación Monte Carlo</div>Se juega el torneo completo miles de veces, con el formato y el bracket oficial 2026, y se cuentan los resultados.</div>
+    </div>
+    <h3>Por qué confiar en los números</h3>
+    <p>La pieza clave es el <b>anclaje al mercado</b>: las casas de apuestas son, por lejos, la fuente mejor calibrada para estimar resultados de fútbol. Combinar nuestros modelos con esa señal —en vez de competir contra ella— es lo que hace que las probabilidades sean creíbles. Se recalcula cada pocas horas; por eso se mueven.</p>
+    <h3>Formato 2026</h3>
+    <p>48 selecciones, 12 grupos de 4. Avanzan los 2 primeros de cada grupo más los 8 mejores terceros (32) a Dieciseisavos, y de ahí a eliminación directa hasta la final.</p>
+    <h3>Honestidad</h3>
+    <p>Ningún modelo conoce el futuro. Esto es análisis estadístico con fines informativos y de entretenimiento, no una garantía de resultados ni asesoría de apuestas. El código y la bitácora de cambios son abiertos.</p>
+  </section>
+</main>
+<footer><div class="wrap">
+  <span>Las probabilidades reales del Mundial 2026 · 10,000 simulaciones por actualización · cada 4 h.</span>
+  <span><a href="metodologia.html">Metodología</a> · <a class="jsmail" data-u="contacto" data-d="spherics.cl" href="#">Contacto</a></span>
+</div></footer>
+<script>
+(function(){
+  // arma el mailto en runtime (correo partido en data-attrs para que los bots no lo scrapeen)
+  document.querySelectorAll('a.jsmail').forEach(function(a){
+    a.href='mailto:'+a.getAttribute('data-u')+'@'+a.getAttribute('data-d');
+  });
+  var el=document.querySelector('[data-updated]'); if(!el) return;
+  var t=Date.parse(el.getAttribute('data-updated')); if(isNaN(t)) return;
+  var s=Math.max(0,(Date.now()-t)/1000), o;
+  if(s<3600) o=Math.round(s/60)+' min'; else if(s<86400) o=Math.round(s/3600)+' h'; else o=Math.round(s/86400)+' d';
+  el.textContent='hace '+o;
+})();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@twemoji/api@15.1.0/dist/twemoji.min.js" crossorigin="anonymous"></script>
+<script>
+(function(){
+  function p(){ if(window.twemoji) twemoji.parse(document.body,{folder:'svg',ext:'.svg'}); }
+  var q=false,o;
+  function s(){ if(q)return; q=true; requestAnimationFrame(function(){ q=false; if(o)o.disconnect(); p(); if(o)o.observe(document.body,{childList:true,subtree:true}); }); }
+  function init(){ p(); o=new MutationObserver(s); o.observe(document.body,{childList:true,subtree:true}); }
+  if(document.readyState!=='loading')init(); else document.addEventListener('DOMContentLoaded',init);
+})();
+</script>
+</body>
+</html>

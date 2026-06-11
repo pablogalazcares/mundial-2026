@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" data-pal="mundial">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#08090c">
+<title>Privacy · Spherics</title>
+<meta name="description" content="What data the site asks for, what for, and how to unsubscribe.">
+<link rel="canonical" href="https://pablogalazcares.github.io/mundial-2026/en/privacidad.html">
+<link rel="alternate" hreflang="es" href="https://pablogalazcares.github.io/mundial-2026/privacidad.html"><link rel="alternate" hreflang="en" href="https://pablogalazcares.github.io/mundial-2026/en/privacidad.html"><link rel="alternate" hreflang="fr" href="https://pablogalazcares.github.io/mundial-2026/fr/privacidad.html"><link rel="alternate" hreflang="pt" href="https://pablogalazcares.github.io/mundial-2026/pt/privacidad.html"><link rel="alternate" hreflang="x-default" href="https://pablogalazcares.github.io/mundial-2026/privacidad.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Privacy · Spherics">
+<meta property="og:description" content="What data the site asks for, what for, and how to unsubscribe.">
+<meta property="og:image" content="https://pablogalazcares.github.io/mundial-2026/assets/og.png">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:url" content="https://pablogalazcares.github.io/mundial-2026/en/privacidad.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Privacy · Spherics">
+<meta name="twitter:description" content="What data the site asks for, what for, and how to unsubscribe.">
+<meta name="twitter:image" content="https://pablogalazcares.github.io/mundial-2026/assets/og.png">
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/styles.css?v=1781149039">
+
+<script src="../assets/lenis.min.js?v=1781149039" defer></script>
+<script src="../assets/motion.js?v=1781149039" defer></script>
+<script src="../assets/aurora.js?v=1781149039" defer></script>
+</head>
+<body>
+<div class="fx-grain" aria-hidden="true"></div>
+<nav class="nav"><div class="wrap">
+  <a class="brand" href="index.html"><span class="dot"></span> Spherics</a>
+  <div class="links"><a href="index.html">Home</a><a href="calendario.html">Schedule</a><a href="grupos.html">Groups</a><a href="camino.html">Knockout</a><a href="probabilidades.html">Odds</a><a href="partido.html">Matches</a><a href="metodologia.html">Methodology</a><a class="cta-sim" href="simulador.html">🎮 Simulator</a><a class="cta" href="index.html#suscribete">Subscribe</a></div>
+  <div class="langsw" role="group" aria-label="idioma"><a href="../privacidad.html">ES</a><a class="on" aria-current="true">EN</a><a href="../fr/privacidad.html">FR</a><a href="../pt/privacidad.html">PT</a></div>
+</div></nav>
+<main class="wrap">
+
+  <section class="block prose">
+    <div class="shead"><h2>Privacy</h2></div>
+    <p class="lead">A clear summary of what data I ask for, what for, and your rights.</p>
+    <h3>What I collect</h3>
+    <p>If you subscribe: your first name, last name and email. If you ask a question: what you write in the form. Nothing else.</p>
+    <h3>What for</h3>
+    <p>Only to send you the World Cup analysis you asked for and answer your question. I don't sell or share your data with third parties for advertising.</p>
+    <h3>Who processes them</h3>
+    <p>Email is handled with <b>MailerLite</b> and questions with <b>Tally</b> (providers compliant with data regulations). Every email includes a link to <b>unsubscribe</b> in one click.</p>
+    <h3>Your rights</h3>
+    <p>You can access, correct or delete your data anytime: just unsubscribe or write to me and I'll remove it.</p>
+    <h3>Important</h3>
+    <p>This site is statistical analysis for informational and entertainment purposes. <b>It is not financial advice or a guarantee of results.</b> Betting involves risk of loss; it's for adults only. Gamble responsibly.</p>
+  </section>
+</main>
+<footer><div class="wrap">
+  <span>The real 2026 World Cup odds · 10,000 simulations per update · every 4 h.</span>
+  <span><a href="metodologia.html">Methodology</a> · <a class="jsmail" data-u="contacto" data-d="spherics.cl" href="#">Contact</a></span>
+</div></footer>
+<script>
+(function(){
+  // arma el mailto en runtime (correo partido en data-attrs para que los bots no lo scrapeen)
+  document.querySelectorAll('a.jsmail').forEach(function(a){
+    a.href='mailto:'+a.getAttribute('data-u')+'@'+a.getAttribute('data-d');
+  });
+  var el=document.querySelector('[data-updated]'); if(!el) return;
+  var t=Date.parse(el.getAttribute('data-updated')); if(isNaN(t)) return;
+  var s=Math.max(0,(Date.now()-t)/1000), o;
+  if(s<3600) o=Math.round(s/60)+' min'; else if(s<86400) o=Math.round(s/3600)+' h'; else o=Math.round(s/86400)+' d';
+  el.textContent=o+' ago';
+})();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@twemoji/api@15.1.0/dist/twemoji.min.js" crossorigin="anonymous"></script>
+<script>
+(function(){
+  function p(){ if(window.twemoji) twemoji.parse(document.body,{folder:'svg',ext:'.svg'}); }
+  var q=false,o;
+  function s(){ if(q)return; q=true; requestAnimationFrame(function(){ q=false; if(o)o.disconnect(); p(); if(o)o.observe(document.body,{childList:true,subtree:true}); }); }
+  function init(){ p(); o=new MutationObserver(s); o.observe(document.body,{childList:true,subtree:true}); }
+  if(document.readyState!=='loading')init(); else document.addEventListener('DOMContentLoaded',init);
+})();
+</script>
+</body>
+</html>
